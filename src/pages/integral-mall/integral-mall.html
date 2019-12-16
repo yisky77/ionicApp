@@ -1,0 +1,65 @@
+<ion-header [ngStyle]="{'background': navigatorBackColor?navigatorBackColor:'#fff'}">
+  <ion-navbar>
+    <ion-title>积分商城</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+<ion-refresher (ionRefresh)="getRefresh($event)" pullMax='250'>
+    <ion-refresher-content style="font-size:12px;" pullingIcon="ios-arrow-dropdown-outline" pullingText="上拉刷新..." refreshingSpinner="circles" refreshingText=""></ion-refresher-content>
+</ion-refresher>
+  <div class="m-baseInfo inWap" style="background-image:url(../assets/imgs/integ.png);">
+    <a (tap)="sign()" class="signbtn" [ngClass]="{'active':isSign}">{{isSign?'已签到':'每日签到领'+signprice+'积分'}}</a>
+    <span class="pointsGuideEntrance">积分规则</span>
+    <div class="inner">
+     <div class="left">
+      <img src="../assets/imgs/header.png" class="avatar"  />
+      <div class="userInfo">
+       <div class="line1">
+        <span>你的可用积分: </span>
+        <span class="num">{{memberInte}}</span>
+       </div>
+       <div class="tag">
+        <span class="txt">{{level}}会员</span>
+        <i class="u-icon u-icon-point-arrowRight"></i>
+       </div>
+      </div>
+     </div>
+     <div class="right" [navPush]="'IntegralPage'">
+      <i class="u-icon u-icon-detail"></i>
+      <span class="label">明细</span>
+     </div>
+    </div>
+   </div>
+   <div class="containe" id="container">
+    <nav>
+        <div class="flex flex-align-center nav-2-bar" id="nav-2-bar">
+            <div class="flex-1" *ngFor="let item of topCate;let i=index" [ngClass]="currentIndex==i?'active': ''" (tap)="getTopCateDatalist(i)" >
+                <a>{{item}}</a>
+            </div>
+        </div>
+    </nav>
+
+  <div class="listbox">
+          <a class="block">
+              <dl class="flex list-dl" *ngFor="let item of showpCatelist;let i = index" [navPush]="'InteProductPage'" [navParams]="{'inte_id':item['id']}">
+                  <dt>
+                    <img [src]="imageUrl+item.image" alt="" width="100" height="100">
+                  </dt>
+                  <dd class="padl flex-2">
+                      <div class="product_name">{{item.name}}</div>
+                      <div class="product-desript">
+                          <p class="clr53"><span class="b62628">{{item.price}}分</span></p>
+                          <a class="duihuan">兑换</a>
+                          <p class="ratings">
+                            <span>原价:￥{{item.marketPrice}}</span>
+                              &nbsp;&nbsp;
+                            <span class="b62628" style="float:right;">已兑换:{{item.price}}人</span>
+                          </p>
+                      </div>
+                  </dd>
+              </dl>
+          </a>
+        <div id="product_list_more_json_no" class="text-center font14 pad-top2">已展示全部商品</div>
+    </div>
+</div>
+</ion-content>

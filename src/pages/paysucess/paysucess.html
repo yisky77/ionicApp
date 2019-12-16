@@ -1,0 +1,18 @@
+<ion-content>
+    <div class="weui-msg">
+        <div class="weui-msg__icon-area" *ngIf='paysuccess'>
+            <ion-icon name="checkmark-circle"></ion-icon>
+        </div>
+        <div class="weui-msg__icon-area" *ngIf='!paysuccess'>
+            <ion-icon name="alert" color="danger"></ion-icon>
+        </div>
+        <div class="weui-msg__text-area">
+            <h2 class="weui-msg__title">{{paysuccess?'支付成功':'支付失败'}}</h2>
+        </div>
+        <div class="weui-msg__opr-area">
+            <p class="weui-btn-area" (tap)="backbtn();">
+              <a href="javascript:history.back();" class="weui-btn weui-btn_primary">返回</a>
+            </p>
+        </div>
+    </div>
+</ion-content>

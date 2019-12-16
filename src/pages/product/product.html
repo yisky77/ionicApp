@@ -1,0 +1,227 @@
+<ion-header [ngStyle]="{'background': navigatorBackColor?navigatorBackColor:'#fff'}">
+    <ion-navbar>
+      <ion-title>商品详情</ion-title>
+      <ion-icon name="md-share" class="flright" (tap)="sharebtn()" *ngIf="config.isApp && config.isShare"></ion-icon>
+    </ion-navbar>
+  </ion-header>
+  <ion-content class="shopDetail">
+    <ion-refresher (ionRefresh)="doRefresh($event)" pullMax='250'>
+        <ion-refresher-content style="font-size:12px;" pullingIcon="ios-arrow-dropdown-outline" pullingText="上拉刷新..." refreshingSpinner="circles" refreshingText=""></ion-refresher-content>
+    </ion-refresher>
+    <ion-slides speed="500" pager="true" paginationType="bullets" loop="false">    
+      <ion-slide *ngFor="let item of shopSwiperlist">
+        <img [src]="imageUrl+item+'?x-oss-process=image/resize,m_mfit,w_500'+config.imageFormat"/>
+      </ion-slide>
+    </ion-slides>
+    <div class="dt-section-1" *ngIf="shangjia">
+        <div class="m-detailBaseInfo" >
+         <div class="content" >
+          <div class="info" >
+           <div class="name">
+            {{productname1}}
+           </div>
+           <div class="desc" >
+              {{productname2}}
+           </div>
+           <div class="price" >
+            <span class="priceArea">
+              <span class="currentPrice"><span *ngIf="mallMobilePrice<100000">¥</span>
+              <span >{{mallMobilePrice>100000?'面议':mallMobilePrice}}</span></span>
+            </span>
+            <span class="priceArea fr" *ngIf="virtualSales>0">
+              <span class="currentPrice"><span >月销量</span>
+              <span >{{virtualSales}}</span></span>
+            </span>
+           </div>
+          </div>
+          <div class="comment" (tap)="getevaluation()">
+           <div class="wrap" >
+            <div class="num" >{{evaluationlength}}+</div>
+            <div class="com">用户评价</div>
+            <div class="more" >查看</div>
+           </div>
+          </div>
+         </div>
+         <div class="specSelect" (tap)="getParameter()">
+            <div class="m-listItem " >
+             <div class="inner" >
+              <div class="inner" >
+               <span class="it">规格: {{product_attr}}</span>
+              </div>
+             </div>
+             <i class="icon u-icon u-address-right"></i>
+            </div>
+          </div>
+           <div class="specSelect" >
+            <div class="m-listItem " >
+              <div class="inner" >
+              <div class="inner" >
+                <span class="it">限制：特价商品不可与优惠券叠加使用</span>
+              </div>
+              </div>
+            </div>
+            </div>
+            <div class="specSelect" (tap)="getAddress()">
+                <div class="m-listItem " >
+                  <div class="inner" >
+                  <div class="inner" >
+                    <span class="it">配送：{{address}}</span>
+                  </div>
+                  </div>
+                  <i class="icon u-icon u-address-right"></i>
+                </div>
+            </div>
+            <div class="specSelect" >
+                <div class="m-listItem " >
+                  <div class="inner" >
+                  <div class="inner" >
+                    <span class="it">积分：购买最高得20积分</span>
+                  </div>
+                  </div>
+                </div>
+            </div>
+            <!-- <div class="service-wraper dt-section" (tap)="openService()">
+                <div >
+                 <div class="m-serviceEntry">
+                  <div class="left" >
+                   服务：
+                  </div>
+                  <div class="right ">
+                   <div class="right-item-wraper">
+                    <div class="right-item">
+                     支持30天无忧退换货
+                    </div>
+                    <div class="right-item">
+                     48小时快速退款
+                    </div>
+                   </div>
+                   <div class="right-item-wraper">
+                    <div class="right-item">
+                     满88元免邮费
+                    </div>
+                    <div class="right-item">
+                     网易自营品牌
+                    </div>
+                   </div>
+                   <div class="right-item-wraper">
+                    <div class="right-item">
+                     国内部分地区无法配送
+                    </div>
+                   </div>
+                  </div>
+                  <i class="icon u-icon u-address-right"></i>
+                 </div>
+                </div>
+            </div> -->
+            <div class="specSelect" (tap)="getevaluation()">
+              <div class="m-listItem">
+                <div class="inner">
+                <div class="inner">
+                  <span class="it">用户评价 ({{evaluationlength}}+)</span>
+                  <span class="it" class="percent">好评率{{productCommentsHighProportion}}%</span>
+                </div>
+                </div>
+                <i class="icon u-icon u-address-right"></i>
+              </div>
+            </div>
+            <div class="m-itemDetail">
+                <div class="dt-section dt-section-1">
+                 <div class="m-attrCon">
+                  <div class="attrList" >
+                   <div class="tt">
+                    商品参数
+                   </div>
+                   <div class="item" >
+                    <div class="left" >
+                     商品名称
+                    </div>
+                    <div class="right">
+                     <div class="con line30">
+                      {{shopcanshu_productname1}}
+                     </div>
+                    </div>
+                   </div>
+                   <div class="item">
+                    <div class="left" >
+                     店铺
+                    </div>
+                    <div class="right" >
+                     <div class="con line30" >
+                        {{shopcanshu_shopname}}
+                     </div>
+                    </div>
+                   </div>
+                   <div class="item" >
+                    <div class="left">
+                     上架时间
+                    </div>
+                    <div class="right" >
+                     <div class="con line30" >
+                      {{shopcanshu_productuptime}}
+                     </div>
+                    </div>
+                   </div>
+                   <div class="item" *ngFor="let item of productAttr">
+                      <div class="left" >{{item.name}}</div>
+                      <div class="right" >
+                        <div class="con" >
+                          {{item.value}}
+                        </div>
+                      </div>
+                   </div>
+                  </div>
+                 </div>
+                 <div [innerHTML]="description"></div>
+                </div>
+                <!-- <div class="m-commonIssues">
+                 <div class="tt" >
+                  <div class="line" ></div>
+                  <span class="text" >常见问题</span>
+                 </div>
+                 <div class="list" >
+                  <div class="item" >
+                   <p class="qu" ><i class="u-icon u-detail-redNum" ></i><span >购买运费如何收取？</span></p>
+                   <p class="an" >单笔订单金额（不含运费）满88元免邮费；不满88元，每单收取10元运费。<br />(港澳台地区需满500元免邮费；不满500元，每单收取30元运费)</p>
+                  </div>
+                  <div class="item">
+                   <p class="qu" ><i class="u-icon u-detail-redNum" ></i><span>订单如何配送？</span></p>
+                   <p class="an" >根据商品所在地、顾客所在地和商品的尺寸重量优选物流配送商，确保优质用户体验。目前暂不支持自选快递，具体物流信息可在下单成功后“我的订单-追踪物流”中查看。</p>
+                  </div>
+                  <div class="item" >
+                   <p class="qu" ><i class="u-icon u-detail-redNum" ></i><span >如何申请退换货？</span></p>
+                   <p class="an">1.自收到商品之日起30日内，顾客可申请无忧退货；如果是退货，退款将原路返还，不同的银行处理时间不同，预计1-5个工作日到账；<br />2.内裤和食品等特殊商品无质量问题不支持退换货；<br />3.退货流程：<br />确认收货-申请退货-客服审核通过-用户寄回商品-仓库签收验货-退款审核-退款完成；<br />4.换货流程：<br />确认收货-申请换货-客服审核通过-用户寄回商品-仓库签收验货-客服确认-换货完成；<br />5.上门取件费用统一与快递服务商结算，顾客只需将退换货商品交给上门取件快递员寄回。如顾客选择自行寄回商品，请先垫付运费，到货验证商品后，将以现金券形式为用户报销运费，不接受单方面到付件。</p>
+                  </div>
+                  <div class="item" >
+                   <p class="qu" ><i class="u-icon u-detail-redNum" ></i><span >关于相关价格说明？</span></p>
+                   <p class="an" >1.划线价、指导价：商品展示的划线价或指导价可能是商品制造厂商的零售市场指导价、品牌专柜价、商品吊牌价或该商品在上曾经展示过的销售价；由于地区、时间的差异性和市场行情波动，品牌专柜标价、商品吊牌价等可能会与您购物时展示的不一致，该价格仅供您参考。<br />2.活动价：如无特殊说明，促销价是商家在划线价、指导价基础上给予的优惠价格。如有疑问，您可以在购买前与客服联系。<br />3.价：非会员用户购买的商品详情页显示的售价。<br />4.会员价：在价的基础上给予不同类型会员用户的优惠价格，仅该类会员用户可以以会员价购买该商品。<br />5.价格异常：因可能存在系统缓存、页面更新延迟等不确定性情况，导致价格显示异常，商品具体售价请以订单结算页价格为准。如您发现异常情况出现，请立即联系我们补正，以便您能顺利购物。</p>
+                  </div>
+                 </div>
+                </div> -->
+            </div>
+        </div>
+    </div>
+    <div *ngIf="!shangjia" class="shoptt">该商品暂未上架！</div>
+  </ion-content>
+  
+  <ion-footer  *ngIf="shangjia">
+    <ion-toolbar>
+        <div class="footer_bar">
+          <div class="carticon careabout" (tap)="collectbtn()" [ngClass]="{'collect':collectedProduct}">          
+            <ion-icon ios="ios-heart" md="md-heart" color="danger"></ion-icon>
+            <p>收藏</p>
+          </div>
+          <div class="carticon buycart" [navPush]="'CartPage'">            
+              <ion-icon name="cart"></ion-icon> 
+              <p>购物车</p>
+              <ion-badge color="danger" *ngIf="cartNumber>0">{{cartNumber}}</ion-badge>
+          </div>
+          <div class="addcart" (tap)="getParameter()">
+              加入购物车
+          </div>
+          <div class="buy" (tap)="getParameter()">
+              立即购买
+          </div>
+        </div>
+    </ion-toolbar>
+  </ion-footer>
+  

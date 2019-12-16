@@ -1,0 +1,22 @@
+<!-- <ion-header  [ngStyle]="{'background': navigatorBackColor?navigatorBackColor:'#fff'}">
+  <button ion-button menuToggle>
+    <ion-icon name="menu" color="light"></ion-icon>
+  </button>
+  <ion-title>{{titleName}}</ion-title>
+</ion-header> -->
+<!-- <ion-header [ngStyle]="{'background': navigatorBackColor?navigatorBackColor:'#fff'}">
+    <ion-navbar hide-nav-bar="true">
+      <button ion-button menuToggle>
+        <ion-icon name="menu" color="light"></ion-icon>
+      </button>
+      <ion-title>{{titleName}}</ion-title>
+    </ion-navbar>
+  </ion-header> -->
+<ion-content>
+  <button (tap)="back()" class="iframeback">
+    <ion-icon name="ios-arrow-back" color="dark"></ion-icon>
+  </button>
+  <div class="father">
+    <iframe [src]="viewlocation" id="iframecontent"></iframe>
+  </div>
+</ion-content>

@@ -1,0 +1,27 @@
+page-about-us {
+  img{width:100px;height:100px;margin:0 auto;display: block;margin:0 auto;    border-radius: 5px;}
+  .copyright{
+    width: 160px;
+    text-align: center;
+    margin: 0 auto;
+    font-size: 13px;color:#7b7b7b;
+  }
+  .markdown {
+    color: #666;
+    font-size: .346667rem;    margin-top: 40px;
+    padding: 0 .373333rem .4rem;
+    padding: 0 3.733333vw 4vw;
+}
+.markdown h3 {
+  margin-top: .666667rem;
+  margin-top: 6.666667vw;
+  margin-bottom: .2rem;
+  margin-bottom: 2vw;
+  font-weight: 600;font-size: 13px;
+  color: #333;
+}
+.markdown p {
+  margin: .7em 0;color:#7b7b7b;
+  line-height: 1.4;font-size: 13px;
+}
+}

@@ -1,0 +1,59 @@
+<ion-header >
+    <ion-navbar [ngStyle]="{'background': navigatorBackColor?navigatorBackColor:'#fff'}">
+      <ion-title>我的收藏</ion-title>
+    </ion-navbar>
+    <ion-toolbar>
+      <nav>
+          <div class="flex flex-align-center nav-2-bar viporder" id="nav-2-bar">
+              <div class="flex-1" *ngFor="let item of orderList;let i=index" [ngClass]="currentIndex==i?'active': ''" (tap)="getTopCateDatalist(i)" >
+                  <a>{{item}}</a>
+              </div>
+          </div>
+      </nav>
+  </ion-toolbar>
+  </ion-header>
+  <ion-content>
+      <ion-refresher (ionRefresh)="getRefresh($event)" pullMax='250'>
+          <ion-refresher-content style="font-size:12px;" pullingIcon="ios-arrow-dropdown-outline" pullingText="上拉刷新..." refreshingSpinner="circles" refreshingText=""></ion-refresher-content>
+      </ion-refresher>
+      <div class="m-orderList" [hidden]="currentIndex==1" *ngFor="let items of Productlist;let i=index" [navPush]="'ProductPage'" [navParams]="{'cid':items['productId']}">
+            <div class="m-orderItem first" >
+              <div class="packageList" >
+                  <div class="row-2 flex" >
+                  <div class="goodImg f-fl flex-1" >
+                      <div class="wraper" >
+                        <img [src]="imageUrl+items.productLeadLittle+config.imageFormat" width="100%" height="100%"  />
+                      </div>
+                  </div>
+                  <div class="goodInfo f-fl flex-2" >
+                      <div class="goodName">{{items.productName}}</div>
+                  </div>
+                  <div class="goodStatus f-fr flex-1">
+                      <div>￥{{items.mallMobilePrice}}</div>
+                  </div>
+              </div>
+              </div>
+            </div>
+        </div>
+        <div class="m-orderList" [hidden]="currentIndex==0" *ngFor="let items of Productlist;let i=index" [navPush]="'StorePage'" [navParams]="{'sid':items['sellerId']}">
+                <div class="m-orderItem first">
+                  <div class="packageList" >
+                      <div class="row-2 flex" >
+                      <div class="goodImg f-fl flex-1" >
+                          <div class="wraper" >
+                            <img [src]="imageUrl+items.sellerLogo+'?x-oss-process=image/resize,m_mfit,h_410'+config.imageFormat" width="100%" height="100%"  />
+                          </div>
+                      </div>
+                      <div class="goodInfo f-fl flex-2" >
+                          <div class="goodName" style="line-height: 70px;">{{items.sellerName}}</div>
+                      </div>
+                  </div>
+                  </div>
+                </div>
+            </div>
+      <div class="noorder" *ngIf="Productlist && Productlist.length==0">
+          <div class="img"></div>
+          <div class="txt">还没有任何收藏呢</div>
+      </div>
+  </ion-content>
+  

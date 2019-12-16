@@ -1,0 +1,174 @@
+<ion-header  [ngStyle]="{'background': navigatorBackColor?navigatorBackColor:'#fff'}">
+  <ion-navbar>
+    <ion-title>填写订单</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content class="buycontentbg">
+  <ion-refresher (ionRefresh)="getRefresh($event)" pullMax='250'>
+      <ion-refresher-content style="font-size:12px;" pullingIcon="ios-arrow-dropdown-outline" pullingText="上拉刷新..." refreshingSpinner="circles" refreshingText=""></ion-refresher-content>
+  </ion-refresher>
+  <div>
+      <div class="m-shipAddress" [navPush]="'AddressPage'">
+       <div class="m-address-item item" >
+        <div >
+         <div class="left" >
+          <p class="uname">{{address.memberName}}</p>
+          <span class="default" >默认</span>
+         </div>
+         <div class="middle" >
+          <div class="md-con">
+           <p class="uip" >{{address.mobile}}</p>
+           <p class="uinfo" >{{address.addAll+address.addressInfo}}</p>
+          </div>
+         </div>
+         <i class="u-icon u-address-right" ></i>
+        </div>
+       </div>
+      </div>
+      <ul class="m-list m-discount" >
+       <!-- <li class="item" >
+        <div class="m-listItem f-clearfix" >
+         <div class="inner" >
+          <div class="selectCoupon" >
+           <div class="left" >
+            暂无可用优惠券
+           </div>
+           <div class="right" >
+            <div class="text">
+             <span >0</span>
+             <span >张</span>
+            </div>
+           </div>
+          </div>
+         </div>
+         <i class="icon u-icon u-address-right"></i>
+        </div>
+      </li> -->
+      </ul>
+      <ul class="m-list m-summary">
+       <li class="item" >
+        <div class="m-listItem summaryItem noArrow" >
+         <div class="inner" >
+          <div >
+           <div class="left" >
+            商品合计
+           </div>
+           <div class="right" >
+            <span >&yen;</span>
+            <span >{{cartInfoVO.checkedCartAmount}}</span>
+           </div>
+          </div>
+         </div>
+        </div></li>
+       <li class="item">
+        <div class="m-listItem summaryItem activityDiscount noArrow">
+         <div class="inner">
+          <div >
+           <div class="left" >
+            <span >活动优惠</span>
+            <i class="icon u-icon u-icon-questionMark" ></i>
+           </div>
+           <div class="right" >
+            <span >-&yen;</span>
+            <span >{{cartInfoVO.checkedDiscountedAmount}}</span>
+           </div>
+          </div>
+         </div>
+        </div></li>
+       <li class="item">
+        <div class="m-listItem summaryItem noArrow" >
+         <div class="inner">
+          <div >
+           <div class="left" >
+            运费
+           </div>
+           <div class="right" >
+            <span >&yen;</span>
+            <span >{{cartInfoVO.logisticsFeeAmount}}</span>
+           </div>
+          </div>
+         </div>
+        </div></li>
+       <li class="item" >
+        <div class="m-listItem summaryItem noArrow" >
+         <div class="inner" >
+          <div >
+           <div class="left" >
+            优惠券
+           </div>
+           <div class="right" >
+            <span >-¥</span>
+            <span>0.00</span>
+           </div>
+          </div>
+         </div>
+        </div></li>
+       <li class="item">
+        <div class="m-listItem m-invoiceLine">
+         <div class="inner">
+          <div >
+           <div class="left m-lineWithCheckbox" >
+            <i class="m-checkbox  m-checkbox-1" ></i>
+            <span class="txt">我要开发票</span>
+           </div>
+           <div class="right"></div>
+          </div>
+         </div>
+         <i class="icon u-icon u-address-right"></i>
+        </div>
+      </li>
+      </ul>
+      <div class="pccontent" *ngFor="let item of cartInfoVO.cartListVOs">
+        <p class="marginb10">
+          <img class="headers" [src]="imgUrl+item.seller.sellerLogo"/>
+          <span>{{item.seller.sellerName}}</span>
+          <!-- <span class="theme">{{item.actFull.actFullName}}</span> -->
+        </p>
+        <div class="m-goods"  *ngFor="let item of item.cartList" [navPush]="'ProductPage'" [navParams]="{'cid':item['productId']}">
+        <ul class="m-list  noLastBorder">
+          <li class="item">
+          <div class="m-listItem  noArrow">
+            <div class="inner" >
+            <div class="m-colGood">
+              <div class="main">
+              <div class="left" >
+                <img [src]="imgUrl+item.product.masterImg"  />
+              </div>
+              <div class="right" >
+                <div class="line1">
+                <div class="name">
+                  <span class="nameTag"><span >{{item.product.name1}}</span><span>&nbsp;</span></span>
+                </div>
+                <div class="count">
+                  <span>x</span>
+                  <span>{{item.count}}</span>
+                </div>
+                </div>
+                <div class="line2" >
+                <div class="desc" >{{item.specInfo}}</div>
+                </div>
+                <div class="line3" >
+                <div class="currentPrice">
+                  <span ><span >&yen;</span><span>{{item.productGoods.mallMobilePrice}}</span></span>
+                </div>
+                </div>
+              </div>
+              </div>
+              <div class="bottom"></div>
+            </div>
+            </div>
+          </div>
+          </li>
+        </ul>
+        </div>
+      </div>
+    </div>
+</ion-content>
+<ion-footer>
+    <ion-toolbar>
+      <div class="all_price">应付: ¥{{cartInfoVO.finalAmount}} 元</div>
+      <ion-buttons (tap)="goPay()" end>
+        <div color="danger" class="dopay">去支付</div>
+      </ion-buttons>
+    </ion-toolbar>
+</ion-footer>

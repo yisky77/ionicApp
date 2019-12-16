@@ -1,0 +1,18 @@
+.searchcontent{
+  .nodata{color:#8a7676;}
+  .label-ios{margin:0;}
+  .item-ios.item-block .item-inner{padding:0;}
+  .list-dl{border-bottom:none;}
+  .item-ios p{font-size: 14px;
+    span{font-size:14px; }
+  }
+  // .list-dl img{overflow: hidden;}
+  .searchbar-input{font-size: 12px;}
+  .searchbtn{
+    position: absolute;
+    top: 0;
+    right: 40px;
+    line-height: 45px;
+    font-size: 12px;
+  }
+}

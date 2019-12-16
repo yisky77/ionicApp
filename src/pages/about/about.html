@@ -1,0 +1,212 @@
+<ion-header [ngStyle]="{'background': navigatorBackColor?navigatorBackColor:'#fff'}">
+  <ion-navbar hide-nav-bar="true">
+    <button ion-button menuToggle>
+      <ion-icon name="menu" color="light" class="menuicon"></ion-icon>
+    </button>
+    <ion-title>{{titleName}}</ion-title>
+    <!-- <ion-icon ios="ios-more" md="md-more" color="light" (tap)="moreAction()" class="moreicon"></ion-icon> -->
+  </ion-navbar>
+</ion-header>
+<div [ngStyle]="stylefunbg(bgImg)" class="bgimg"></div>
+<ion-content [ngStyle]="{'background': bgImg?'none':bgcolor}">
+  <!-- <div class="bg_ioncontent" *ngIf="!bgImg" [ngStyle]="{'background': bgImg?'none':bgcolor}"></div> -->
+  <ion-refresher (ionRefresh)="doRefresh($event)" pullMax='250'>
+      <ion-refresher-content style="font-size:12px;" pullingIcon="ios-arrow-dropdown-outline" pullingText="" refreshingSpinner="circles" refreshingText=""></ion-refresher-content>
+  </ion-refresher>
+  <div class="main abd" id="contentmain">
+    <ion-list id="sortable">
+      <ion-item class="ui-state-default ui-droppable" [ngClass]="((item.searchList)[0])?'searchH':''" *ngFor="let item of container;let key=index"  [ngStyle]="stylefun(item.container[0])">
+        <div [ngStyle]="stylefun(item.container[0].insty[0])" class="mask_area"></div>
+        <img class="mask_area tonglanbg" [src]="item.container[0].insty[0].bgimg+'?x-oss-process=image/resize,m_mfit,h_410,w_300'+config.imageFormat" *ngIf="item.container[0].insty[0].bgimg" />
+        <!-- 按钮组件 -->
+        <a (tap)="gopage(items)"  class="btn btnchild" *ngFor="let items of item.buttonList;let key=index" href="javascript:;" [ngStyle]="stylefun(items)">
+          <span [ngStyle]="{'line-height':items.h + 'px'}">{{items.con}}</span>
+        </a>
+        <!-- 照片组件 -->
+        <a (tap)="gopage(items)" *ngFor="let items of item.picList;let key=index" class="picUpload" [ngStyle]="stylefun(items)">
+          <img [src]="items.pic+'?x-oss-process=image/resize,m_mfit,w_400'+config.imageFormat" [ngStyle]="{'border-radius': items.bdr + 'px'}"/>
+        </a>
+        <!-- 标题组件 -->
+        <div class="title titlechild" [ngClass]="items.classnm" *ngFor="let items of item.titleList" [ngStyle]="{'border-radius':items.bdr+'px','border-color':items.bdc}">
+            <div class="titlecon" [ngStyle]="stylefun(items)">
+            <img [src]="items.imgurl+'?x-oss-process=image/resize,m_mfit,h_400,w_100'+config.imageFormat" class="imgtitle" *ngIf="items.imgurl"/>
+            <span class="span1" [ngStyle]="{'background':items.text[0].bgc}">
+                <img [src]="items.text[0].iconbg" *ngIf="items.text[0].iconbg!=='' && items.classnm == 'title3'" />
+              </span>
+          <span [ngStyle]="{'line-height': items.h + 'px'}" class="titletxt">{{items.text[0].con}}</span>
+          <div  (tap)="gopage(items)" class="more" *ngIf="items.showmore === '0'">更多 ></div>
+        </div>
+        </div>
+        <!-- 文字组件 -->
+        <a class="textedit dragbtn" (tap)="gopage(items)" *ngFor="let items of item.textList;let key=index" [ngStyle]="stylefun(items)">
+          <textarea [(ngModel)]="items.con" readonly [ngStyle]="{'line-height': items.lh+'px','font-family':items.ff}"></textarea>
+        </a>
+
+        <!-- 仅支持手机h5视频组件1 -->
+        <a class="videochild" *ngFor="let items of item.videoList1;let key=index" [ngStyle]="stylefun(items)">
+            <iframe frameborder="0" [src]="items.vis | safe" allowFullScreen="true" style="width:100%;height:100%;"></iframe>
+          </a>
+          <!-- h5和app通用视频组件2 -->
+          <a class="videochild" *ngFor="let items of item.videoList;let key=index" [ngStyle]="stylefun(items)">
+            <video [src]="items.vis" controls preload="auto"></video>
+          </a>
+        <!-- 在线留言 -->
+        <div class="msg1 dragbtn" [ngClass]="items.classnm"  *ngFor="let items of item.msgList;let key=index" [ngStyle]="stylefun(items)"   >
+          <nav>
+            <p class="clearfix"><span>姓名</span><input type="text"  [(ngModel)]="msg.contract" placeholder="请输入姓名(必填)" /></p>
+            <p class="clearfix"><span>电话</span><input type="text" [(ngModel)]="msg.telephone" placeholder="请输入电话(必填)" /></p>
+            <p class="textareacon clearfix">
+              <span>内容</span><textarea placeholder="请输入内容(必填)" [(ngModel)]="msg.content"></textarea>
+            </p>
+            <div class="height40 clearfix sss">
+              <div class="sub" (tap)="submsginfo()" [ngStyle]="{'border':'1px solid '+ items.btn[0].bdc,'color':items.btn[0].co, 'border-radius':items.btn[0].bdr + 'px', 'font-size':items.btn[0].fs +'px', 'background-color': items.btn[0].bgc}">{{items.btn[0].con}}</div>
+            </div>
+          </nav>
+        </div>
+        <!-- 搜索组件 -->
+        <a (tap)="gosearch()" class="dragbtn search" [ngClass]="items.classnm"  *ngFor="let items of item.searchList;let key=index" [ngStyle]="stylefun(items)"   >
+          <i class="icon iconfont search_ico" [ngStyle]="{'color': items.icobg}">&#xe611;</i>
+          <input *ngIf="items.classnm !== 'search3'" class="searchinput" placeholder="{{items.place}}" [ngStyle]="{'color':items.co,'font-size':items.fs +'px'}"/>
+          <span  *ngIf="items.classnm === 'search3'" class="searchspan" [ngStyle]="{'color':items.co,'font-size':items.fs +'px'}">{{items.place}}</span>
+        </a>
+        <!-- 魔方导航组件 -->
+        <div class="cubecontent dragbtn" [ngClass]="items.classnm"  *ngFor="let items of item.cubeList;let key=index" [ngStyle]="stylefun(items)" >
+            <div  (tap)="gopage(item2)" class="cubeimg" *ngFor="let item2 of items.cubeLists;let key=index">
+              <img [src]="item2.imgurl+'?x-oss-process=image/resize,m_mfit,h_100'+config.imageFormat" /><span [ngStyle]="{'color':items.co,'font-size':items.fs +'px'}">{{item2.tt}}</span>
+            </div>
+        </div>
+        <!-- 地图组件 -->
+        <a class="dragbtn mapchild" *ngFor="let items of item.mapList; let key=index" [ngStyle]="stylefun(items)" >
+          <div class="mapcontent">
+            <div id="{{'containermap'+ 1}}" class="containermap containermap1"></div>
+            <p *ngIf="items.showtitle" [ngStyle]="{'color': items.co, 'font-size': items.fs + 'px'}">{{items.address}}</p>
+          </div>
+        </a>
+        <!-- 轮播多图组件 -->
+        <div class="swipercontent dragbtn" [ngClass]="items.classnm"  *ngFor="let items of item.swiperList;let key=index" [ngStyle]="stylefun(items)" style="border:1px solid red;">
+          <ion-slides *ngIf="items.swiperLists.length>0 && items.classnm == 'swiper1'" speed="500" pager="true" paginationType="bullets" loop="false" autoplay="3000">    
+            <ion-slide (tap)="gopage(item2)" *ngFor="let item2 of items.swiperLists" [ngStyle]="{'border-radius':items.sonli[0].bdr +'px','opacity':items.sonli[0].op}" >
+                <img [src]="item2.imgurl+'?x-oss-process=image/resize,m_mfit,w_300'+config.imageFormat" *ngIf="item2.imgurl"/>
+                <span [ngStyle]="{'color':items.sonli[0].co,'font-size':items.sonli[0].fs +'px','text-align':items.sonli[0].ta,'display':items.sonli[1].disp}">{{item2.tt}}</span>
+            </ion-slide>         
+          </ion-slides>
+          <ion-slides *ngIf="items.swiperLists.length>0 && items.classnm == 'swiper2'" slidesPerView="2.5" spaceBetween="10" loop="false">    
+              <ion-slide (tap)="gopage(item2)" *ngFor="let item2 of items.swiperLists" [ngStyle]="{'border-radius':items.sonli[0].bdr +'px','opacity':items.sonli[0].op}" >
+                  <img [src]="item2.imgurl+'?x-oss-process=image/resize,m_mfit,h_200,w_200'+config.imageFormat" />
+                  <span [ngStyle]="{'color':items.sonli[0].co,'font-size':items.sonli[0].fs +'px','text-align':items.sonli[0].ta,'display':items.sonli[1].disp}">{{item2.tt}}</span>
+              </ion-slide>         
+          </ion-slides>
+          <div class="widthp" *ngIf="items.swiperLists.length>0 && items.classnm == 'swiper3'">
+            <div class="sonp" [ngStyle]="{'border-radius':items.sonli[0].bdr +'px','opacity':items.sonli[0].op,'padding':items.sonli[0].pd+'px'}" *ngFor="let item2 of items.swiperLists">
+              <div (tap)="gopage(item2)" class="li">
+                <img [src]="item2.imgurl+'?x-oss-process=image/resize,m_mfit,h_200,w_200'+config.imageFormat">
+                <span [ngStyle]="{'color':items.sonli[0].co,'font-size':items.sonli[0].fs +'px','text-align':items.sonli[0].ta,'display':items.sonli[1].disp}">{{item2.tt}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 文章列表组件 -->
+        <div [hidden]="item.articleList.length==0" class="arcicle_content" *ngFor="let listitem of item.articleList;let key=index">
+          <div (tap)="gopageshop(items)" class="article content" [ngClass]="listitem.classnm" [hidden]="listitem.classnm == 'article2'" *ngFor="let items of listitem.articleLists">
+            <div [ngStyle]="stylefun(listitem)" class="boxsizing">
+              <div class="articleco">
+                <div class="cont" [ngStyle]="{'border-radius':listitem.bdr}">
+                  <p class="title" [ngStyle]="{'color':listitem.titlesty[0].co,'font-size':listitem.titlesty[0].fs +'px'}">{{items.title}}</p>
+                  <p class="desc" [ngStyle]="{'color':listitem.dessty[0].co,'font-size':listitem.dessty[0].fs +'px'}">{{items.newsSummary}}</p>
+                  <span class="date">{{items.createTime}}</span>
+                </div>
+              </div>
+              <div class="articleimages">
+                <div class="articleimg">
+                  <img [src]="config.imageUrl+items.image+'?x-oss-process=image/resize,m_mfit,h_200,w_200'+config.imageFormat" href="items.link">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="article2" *ngIf="listitem.classnm == 'article2'">
+            <ion-slides *ngIf="listitem.articleLists.length>0" slidesPerView="1" spaceBetween="5" loop="false">    
+              <ion-slide (tap)="gopageshop(items)" *ngFor="let items of listitem.articleLists" [ngStyle]="stylefun(listitem)" >
+                  <div class="articleco">
+                    <div class="cont" [ngStyle]="{'border-radius':listitem.bdr}">
+                      <p class="title" [ngStyle]="{'color':listitem.titlesty[0].co,'font-size':listitem.titlesty[0].fs+'px'}">{{items.title}}</p>
+                      <p class="desc" [ngStyle]="{'color':listitem.dessty[0].co,'font-size':listitem.dessty[0].fs +'px'}">{{items.newsSummary}}</p>
+                      <span class="date">{{items.createTime}}</span>
+                    </div>
+                  </div>
+                  <div class="articleimages">
+                    <div class="articleimg">
+                      <img [src]="config.imageUrl+items.image+'?x-oss-process=image/resize,m_mfit,h_230,w_140'+config.imageFormat" href="items.link">
+                    </div>
+                  </div>
+              </ion-slide>         
+            </ion-slides>
+          </div>
+        </div>
+        <!-- 商品组件 -->
+        <div class="goods" *ngFor="let listitem of item.shopList" [ngStyle]="{'padding':listitem.pd+'px'}">
+          <div class="swiper-container swiper-containergoods3 goods3" *ngIf="listitem.classnm == 'goods3'">
+            <ion-slides *ngIf="listitem.shopLists.length>0" slidesPerView="2.5" spaceBetween="10" loop="false">    
+                <ion-slide (tap)="gopageshop(items,'shop')" *ngFor="let items of listitem.shopLists" [ngStyle]="{'border-radius': listitem.sonli[0].bdr+'px','padding':listitem.pd+'px','border': listitem.pdd[0].bdw +'px solid '+ listitem.pdd[0].bdc,'background': listitem.pdd[0].bgc}">
+                    <div class="imgSize g_img">
+                        <img class="picimg"  [src]="config.imageUrl+items.masterImg+'?x-oss-process=image/resize,m_mfit,h_200,w_200'+config.imageFormat" [ngStyle]="{'border-radius': listitem.sonli[0].bdr+'px'}"/>
+                        <div class="g_hot" *ngIf="listitem.hot[0].showhot" [ngStyle]="{'color':listitem.co}">
+                          <i class="icon iconfont icofont" *ngIf="listitem.hot[0].hottype == '1'">&#xe655;</i>
+                          <i class="icon iconfont icofont" *ngIf="listitem.hot[0].hottype == '2'">&#xe6c3;</i>
+                          <i class="icon iconfont icofont" *ngIf="listitem.hot[0].hottype == '3'">&#xe630;</i>
+                          <i class="icon iconfont icofont" *ngIf="listitem.hot[0].hottype == '4'">&#xe673;</i>
+                          <img [src]="listitem.hot[0].hoturl+'?x-oss-process=image/resize,m_mfit,h_36,w_36'+config.imageFormat" *ngIf="listitem.hot[0].hottype == '5'"/>
+                        </div>
+                      </div>
+                      <div class="g_msg">
+                        <p class="g_name" [ngStyle]="{'font-size':listitem.titlesty[0].fs+'px','color':listitem.titlesty[0].co}">{{items.name1}}</p>
+                        <p class="g_describe" *ngIf="listitem.dessty[0].showdesc" [ngStyle]="{'font-size':listitem.dessty[0].fs+'px','color':listitem.dessty[0].co}">{{items.name2}}</p>
+                        <div class="g_price" [ngStyle]="{'color':listitem.co}">
+                          <span>¥{{items.malMobilePrice}}</span>
+                          <div class="g_btn" *ngIf="listitem.btn[0].showbtn">
+                            <i class="icon iconfont icofont buyicon" *ngIf="listitem.btn[0].btntype == '1' && listitem.btn[0].btntype !== '5'" [ngStyle]="{'color':listitem.co}">&#xe600;</i>
+                            <p class="buy buy1"  *ngIf="listitem.btn[0].btntype !== '1' && listitem.btn[0].btntype !== '5'" [ngClass]="'buy'+listitem.btn[0].btntype"  [ngStyle]="{'color':listitem.co,'background':listitem.co,'border':'1px solid '+listitem.co}">购买</p>
+                            <img [src]="listitem.btn[0].btnurl+'?x-oss-process=image/resize,m_mfit,h_20,w_50'+config.imageFormat"  *ngIf="listitem.btn[0].btntype == '5'"/>
+                          </div>
+                        </div>
+                      </div>
+                </ion-slide>         
+              </ion-slides>
+            </div>
+            <div class="goods_box" (tap)="gopageshop(items,'shop')" [hidden]="listitem.classnm == 'goods3'" [ngClass]="listitem.classnm" *ngFor="let items of listitem.shopLists" [ngStyle]="{'border-radius': listitem.sonli[0].bdr+'px','border': listitem.pdd[0].bdw +'px solid '+ listitem.pdd[0].bdc,'background': listitem.pdd[0].bgc}">
+                <div class="imgSize g_img">
+                  <img class="picimg"  [src]="config.imageUrl+items.masterImg+'?x-oss-process=image/resize,m_mfit,h_300,w_200'+config.imageFormat" [ngStyle]="{'border-radius': listitem.sonli[0].bdr+'px'}"/>
+                  <div class="g_hot" *ngIf="listitem.hot[0].showhot" [ngStyle]="{'color':listitem.co}">
+                    <i class="icon iconfont icofont" *ngIf="listitem.hot[0].hottype == '1'">&#xe655;</i>
+                    <i class="icon iconfont icofont" *ngIf="listitem.hot[0].hottype == '2'">&#xe6c3;</i>
+                    <i class="icon iconfont icofont" *ngIf="listitem.hot[0].hottype == '3'">&#xe630;</i>
+                    <i class="icon iconfont icofont" *ngIf="listitem.hot[0].hottype == '4'">&#xe673;</i>
+                    <img [src]="listitem.hot[0].hoturl+'?x-oss-process=image/resize,m_mfit,h_36,w_36'+config.imageFormat" *ngIf="listitem.hot[0].hottype == '5'"/>
+                  </div>
+                </div>
+                <div class="g_msg">
+                  <p class="g_name" [ngStyle]="{'font-size':listitem.titlesty[0].fs+'px','color':listitem.titlesty[0].co}">{{items.name1}}</p>
+                  <p class="g_describe" *ngIf="listitem.dessty[0].showdesc" [ngStyle]="{'font-size':listitem.dessty[0].fs+'px','color':listitem.dessty[0].co}">{{items.name2}}</p>
+                  <div class="g_price" [ngStyle]="{'color':listitem.co}">
+                    <!-- <span>¥{{items.price}}</span> -->
+                    <span *ngIf="listitem.classnm !== 'goods5'">¥{{items.malMobilePrice}}</span>
+                    <span *ngIf="listitem.classnm == 'goods5'">{{items.malMobilePrice}}<a>RMB</a></span>
+                  <!-- </div> -->
+                  <div class="g_btn" *ngIf="listitem.btn[0].showbtn">
+                    <i class="icon iconfont icofont buyicon" *ngIf="listitem.btn[0].btntype == '1' && listitem.btn[0].btntype !== '5'" [ngStyle]="{'color':listitem.co}">&#xe600;</i>
+                    <p class="buy buy1"  *ngIf="listitem.btn[0].btntype !== '1' && listitem.btn[0].btntype !== '5'" [ngClass]="'buy'+listitem.btn[0].btntype"  [ngStyle]="{'color':listitem.co,'background':listitem.co,'border':'1px solid '+listitem.co}">购买</p>
+                    <img [src]="listitem.btn[0].btnurl+'?x-oss-process=image/resize,m_mfit,h_20,w_50'+config.imageFormat"  *ngIf="listitem.btn[0].btntype == '5'"/>
+                  </div>
+                  </div>
+                </div>
+            </div>
+          </div>
+      </ion-item>
+      <!-- <li *ngIf='container.length < 1' class="nodata">当前页面暂无数据！</li> -->
+      <!-- 技术支持 -->
+      <ion-item  *ngIf="jishutxt.content.tt.length>0" id="jishutxt" class="jishutxt cannotdrag" [ngStyle]="stylefun(jishutxt.content)">
+        <p [ngStyle]="{'line-height': jishutxt.content.h+'px'}">{{jishutxt.content.tt}}</p>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>

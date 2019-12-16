@@ -1,0 +1,109 @@
+<ion-header [ngStyle]="{'background': navigatorBackColor?navigatorBackColor:'#fff'}">
+  <ion-navbar>
+    <ion-title>会员中心</ion-title>
+    <ion-icon name="md-share" class="flright" (tap)="sharebtn()" *ngIf="config.isApp && config.isShare"></ion-icon>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-refresher (ionRefresh)="getRefresh($event)" pullMax='250'>
+        <ion-refresher-content style="font-size:12px;" pullingIcon="ios-arrow-dropdown-outline" pullingText="上拉刷新..." refreshingSpinner="circles" refreshingText=""></ion-refresher-content>
+    </ion-refresher>
+    <div class="s-containerr cl70"> 
+      <div class="user-perinfo"> 
+        <div class="perinfor-1 flex flex-pack-center flex-align-center"> 
+          <div class="text-center" [navPush]="'MyinfoPage'"> 
+            <p class="fa fa-user">
+              <img [src]="headerbg" />
+            </p>
+            <div class="name">
+                {{memberNickname}}&nbsp;(积分: {{integral}})
+            </div> 
+          </div> 
+        </div> 
+        <div class="specSelect" [navPush]="'MyorderPage'" [navParams]="{'cid':'0'}">
+            <div class="m-listItem " >
+              <div class="inner" >
+              <div class="inner" >
+                <span class="it">我的订单</span>
+              </div>
+              </div>
+              <i class="icon u-icon u-address-right"></i>
+            </div>
+        </div>
+        <nav>
+          <div class="flex flex-align-center" id="nav-2-bar" >
+            <div class="flex-1" [navPush]="'MyorderPage'" [navParams]="{'cid':'1'}">
+              <span *ngIf="toBepaidOrders>0">{{toBepaidOrders}}</span>
+              <ion-icon name="basket"></ion-icon><p>待付款</p>
+            </div>
+            <div class="flex-1" [navPush]="'MyorderPage'" [navParams]="{'cid':'3'}">
+                <span *ngIf="toBeDeliveryOrders>0">{{toBeDeliveryOrders}}</span>
+              <ion-icon name="briefcase"></ion-icon><p>待发货</p>
+            </div>
+            <div class="flex-1" [navPush]="'MyorderPage'" [navParams]="{'cid':'4'}">
+              <span *ngIf="toBeReceivedOrders>0">{{toBeReceivedOrders}}</span>
+              <ion-icon name="card" ></ion-icon><p>已发货</p>
+            </div>
+            <div class="flex-1" [navPush]="'MyorderPage'" [navParams]="{'cid':'5'}">
+              <span *ngIf="toBeCommentedOrders>0">{{toBeCommentedOrders}}</span>
+              <ion-icon name="chatbubbles" ></ion-icon><p>待评价</p>
+            </div>
+          </div>
+        </nav>
+      </div> 
+      <ion-row>
+        <ion-col col-4 class="vipcol"  [navPush]="'MyorderPage'" [navParams]="{'cid':'0'}">
+          <ion-icon ios="ios-list-box" md="md-list-box"></ion-icon>
+          <p>我的订单</p>    
+        </ion-col>
+        <ion-col col-4 class="vipcol" [navPush]="'AddresslistPage'">
+            <ion-icon name="pin" ></ion-icon>
+            <p>地址管理</p>
+          </ion-col>
+          <ion-col col-4 class="vipcol" [navPush]="'IntegralMallPage'">
+            <ion-icon name="ribbon" ></ion-icon>
+            <p>积分中心</p>
+          </ion-col>
+          <ion-col col-4 class="vipcol" [navPush]="'MycouponsPage'">
+            <ion-icon name="logo-yen" ></ion-icon>
+            <p>优惠券</p>    
+          </ion-col>
+          <ion-col col-4 class="vipcol" [navPush]="'CollectionPage'">
+            <ion-icon name="star" ></ion-icon>
+            <p>我的收藏</p>    
+          </ion-col>
+          <ion-col col-4 class="vipcol" [navPush]="'ChangephonePage'">
+              <ion-icon name="phone-portrait"></ion-icon>
+              <p>更换手机号</p>    
+            </ion-col>
+          <ion-col col-4 class="vipcol" [navPush]="'SetpwdPage'">
+            <ion-icon name="lock"></ion-icon>
+            <p>密码设置</p>    
+          </ion-col>
+          <!-- <ion-col col-4 class="vipcol" >
+            <a href="http://wpa.qq.com/msgrd?v=3&uin=1484426639">
+              <ion-icon name="headset" ></ion-icon>
+              <p>帮助与客服</p>   
+            </a>
+          </ion-col> -->
+          <ion-col col-4 class="vipcol" [navPush]="'FeedbackPage'">
+            <ion-icon name="browsers" ></ion-icon>
+            <p>意见反馈</p>
+          </ion-col>
+          <ion-col col-4 class="vipcol" [navPush]="'MycommentsPage'">
+            <ion-icon name="microphone" ></ion-icon>
+            <p>我的评价</p>    
+          </ion-col>
+          <ion-col col-4 class="vipcol" [navPush]="'ExchangePage'" [navParams]="{'cid':0}">
+            <ion-icon name="cube"></ion-icon>
+            <p>我的退/换货</p>    
+          </ion-col>
+          <!-- <ion-col col-4 class="vipcol" [navPush]="'AboutUsPage'">
+            <ion-icon name="contact" ></ion-icon>
+            <p>关于</p>
+          </ion-col> -->
+      </ion-row>
+      <div class="g-rows" (tap)="logout()">退出登录</div>
+    </div>
+</ion-content>

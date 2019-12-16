@@ -1,0 +1,35 @@
+<ion-header [ngStyle]="{'background': navigatorBackColor?navigatorBackColor:'#fff'}">
+    <ion-navbar>
+      <ion-title>添加/修改地址</ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content style="background:#f4f4f4;" class="addresscon">
+    <ion-list>
+      <!-- <ion-item> -->
+        <!-- <ion-label fixed></ion-label> -->
+        <!-- <ion-input type="text" [(ngModel)]="create.addAll"></ion-input> -->
+      <!-- </ion-item> -->
+      <ion-item>
+          <ion-label>选择地址</ion-label>
+        <ion-multi-picker item-content [(ngModel)]="create.addAll"  [placeholder]="create.addAll == '' ? '省-市-区(县)' : create.addAll" [separator]="'-'" [multiPickerColumns]="cityColumns" [cancelText]="'取消'" [doneText]="'完成'"></ion-multi-picker>
+      </ion-item>
+      <ion-item>
+        <ion-input type="text" [(ngModel)]="create.addressInfo" placeholder="详细地址:如xxx街道xxx路等"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input type="text" [(ngModel)]="create.memberName" placeholder="姓名"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input type="text" [(ngModel)]="create.mobile" placeholder="手机号码"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-checkbox color="dark" checked="{{create.state==1?'true':'false'}}" (ionChange)="updateState(create.state)"></ion-checkbox>
+        <ion-label>设为默认地址</ion-label>
+      </ion-item>
+    </ion-list>
+</ion-content>
+<ion-footer (tap)="saveAddress()">
+  <ion-toolbar class="add-address-list">
+      <button class="w-bottomBlockBtn w-button w-button-xxl w-button-block w-button-noRadius" >保存</button>
+  </ion-toolbar>
+</ion-footer>

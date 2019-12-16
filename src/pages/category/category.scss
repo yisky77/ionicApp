@@ -1,0 +1,71 @@
+.cate_content{
+  width:100%;
+  height: 100%;  /*首先看高度100% 是否管用  如果没有作用我们要给元素设置绝对定位*/
+  display: flex;
+  ion-item,.item-inner{border:none;}
+  ion-item{
+    padding: 0;
+    text-align: center;height:50px;
+    .item-inner{padding:0 !important;}
+    ion-label{font-size:13px !important;}
+    &.active{color:#a83327;
+        ion-label{font-size:14px !important;}    
+    }
+  }
+  .cate_left{
+      width: 100px;
+      height: 100%;
+      border-right: 1px solid #eee;
+      overflow-y: auto;
+      color: #666;
+
+      ion-label{
+          font-size: 1.4rem;
+      }
+
+
+  }
+  .cate_right{
+      height: 100%;
+      flex:1;
+      overflow-y: auto;
+      ion-label{
+          font-size: 1.4rem;
+      }
+
+      ion-col{
+          border:0.05rem solid #eee;
+          margin-left: -0.05rem;
+          margin-top: -0.05rem;
+          p{
+              text-align: center;
+              color:#666;
+          }
+          img{display: block;margin: 0 auto;max-width: 90%;height: 60px;}
+      }
+      ion-col:nth-child(3n){
+          border-right: 0px;
+      }
+      .fontbold{    color: #c16e66;font-weight: bold;}      
+  }
+}
+.list-ios .item-block .item-inner {
+  border-bottom: 0.55px solid #f0f0f0;
+}
+.shoptxt{
+  text-align: center;width: 100%;line-height: 100px;font-size: 15px;
+}
+.cate_content .cate_right ion-col p{line-height: 30px;text-align: center;    font-size: 13px;}
+.cate_content .cate_right ion-col ion-row  p{text-align: center;}
+.cate_content .cate_right ion-col{border:none;border-bottom: 0.05rem solid #eee;border-right: 0.05rem solid #eee}
+.cate_content .cate_right ion-col ion-row ion-col{border:none;
+    transition: all 0.3s ease;opacity: 1;
+}
+// .cate_content .cate_right ion-col ion-row{border-right: 1px solid #f3f3f3;}
+.nopro ion-col{border-right: 1px solid #f3f3f3 !important;display: none;}
+.cate_content .cate_right .showrow.nopro ion-col{display: block;
+    p{line-height: 39px}
+}
+.cate_content .cate_left .active ion-label{
+    border-left: 2px solid #b34a3e;
+}

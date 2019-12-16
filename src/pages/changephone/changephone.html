@@ -1,0 +1,22 @@
+<ion-header [ngStyle]="{'background': navigatorBackColor?navigatorBackColor:'#fff'}">
+    <ion-navbar>
+      <ion-title>修改手机号码</ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content padding>
+    <p class="titlephone">您当前手机号是{{phone}}，即将修改新的手机号</p>
+    <section class="MessageLogin-FsPlX">
+      <input type="text"  placeholder="输入新手机号" [(ngModel)]="logininfo.mobile" />
+      <button class="CountButton-3e-kd" (tap)="getcheckcode()" *ngIf="!sendtime"> 获取短信验证码 </button>
+      <button class="CountButton-3e-kd" *ngIf="sendtime"> 已发送({{loadtime}})s </button>
+    </section>
+    <section class="MessageLogin-FsPlX">
+      <input type="text"  placeholder="输入验证码" [(ngModel)]="logininfo.verifyCode" />
+    </section>
+    <section class="MessageLogin-FsPlX">
+      <input type="password"  placeholder="输入当前密码(不少于6位数)" [(ngModel)]="logininfo.password" />
+    </section>
+  <button class="SubmitButton-2wG4T" (tap)="updatemobile()">提交修改 </button>
+  </ion-content>
+  

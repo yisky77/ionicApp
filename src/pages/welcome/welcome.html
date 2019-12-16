@@ -1,0 +1,22 @@
+<!-- <ion-slides pager> -->
+<ion-slides [ngClass]="hidepic">
+ 
+  <!-- <ion-slide>
+    <img src="assets/imgs/slide1.png" />
+  </ion-slide>
+ 
+  <ion-slide>
+    <img src="assets/imgs/slide2.png" />
+  </ion-slide>
+ 
+  <ion-slide>
+    <img src="assets/imgs/slide3.png" />
+  </ion-slide> -->
+ 
+  <ion-slide (tap)="goToHome()">
+    <img src="assets/imgs/slide2.png" />
+    <span>{{timesup}}</span>
+    <!-- <a class="buttonstart">立即开始</a> -->
+  </ion-slide>
+ 
+</ion-slides>

@@ -1,0 +1,42 @@
+<ion-header  [ngStyle]="{'background': navigatorBackColor?navigatorBackColor:'#fff'}">
+  <ion-navbar>
+    <ion-title>商家入驻</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+    <div class="App-1EAON">
+        <div class="App-3Q8Qb">
+          <div class="LoginHeader-1jXn6">
+          </div>
+          <div>
+            <div class="MessageLogin-iYvWA">
+              <section class="MessageLogin-FsPlX">
+                <input type="text" placeholder="公司名称(必填)" [(ngModel)]="company" />
+              </section>
+              <section class="MessageLogin-FsPlX">
+              <input type="text"  placeholder="联系人(必填)" [(ngModel)]="name" />
+              </section>
+              <section class="MessageLogin-FsPlX">
+                  <input type="tel" maxlength="11" placeholder="联系电话(必填)" [(ngModel)]="phone" />
+                </section>
+                <section class="MessageLogin-FsPlX">
+                  <input type="text" placeholder="邮箱" [(ngModel)]="email" />
+                </section>
+                <section class="MessageLogin-FsPlX">
+                  <input type="text" placeholder="地址" [(ngModel)]="address" />
+                </section>
+              <button class="SubmitButton-2wG4T" (tap)="submit()" [ngStyle]="{'background': navigatorBackColor?navigatorBackColor:'#fff'}"> 提交 </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <ul>
+        <li *ngFor="let items of sellerlist"  [navPush]="'StorePage'" [navParams]="{'sid':items.id}">
+          <img [src]="imgurl+items.sellerImage+'?x-oss-process=image/resize,m_mfit,h_200'+config.imageFormat" />
+          <p>
+            <img [src]="imgurl+items.sellerLogo+'?x-oss-process=image/resize,m_mfit,h_30'+config.imageFormat" />
+            <span>{{items.sellerName}}</span>
+          </p>
+        </li>
+      </ul>
+</ion-content>

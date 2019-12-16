@@ -1,0 +1,64 @@
+<ion-header >
+  <ion-navbar [ngStyle]="{'background': navigatorBackColor?navigatorBackColor:'#fff'}">
+    <ion-title>我的订单</ion-title>
+  </ion-navbar>
+  <ion-toolbar>
+    <nav>
+        <div class="flex flex-align-center nav-2-bar viporder" id="nav-2-bar">
+            <div class="flex-1" *ngFor="let item of orderList;let i=index" [hidden]="i==2" [ngClass]="currentIndex==i?'active': ''" (tap)="getTopCateDatalist(i)" >
+                <a>{{item}}</a>
+            </div>
+        </div>
+    </nav>
+</ion-toolbar>
+</ion-header>
+<ion-content>
+    <ion-refresher (ionRefresh)="doRefresh($event)" pullMax='250'>
+        <ion-refresher-content style="font-size:12px;" pullingIcon="ios-arrow-dropdown-outline" pullingText="上拉刷新..." refreshingSpinner="circles" refreshingText=""></ion-refresher-content>
+    </ion-refresher>
+    <div class="m-orderList" *ngFor="let item of Productlist;let i=index" >
+        <div class="m-orderItem first" >
+        <div class="row-1" >
+        <span class="orderId">订单编号: {{item.orderSn}}</span>
+        <span></span>
+        <!-- <div class="f-fr btn-cancel" (tap)="cancelOrder()"> -->
+        <div class="f-fr btn-cancel" (tap)="cancelOrder(item.id)" *ngIf="item.orderState == 1">
+        取消订单
+        </div>
+        <div class="f-fr btn-cancel" *ngIf="item.orderState == 6">已取消</div>
+        </div>
+        <div class="packageList"  *ngFor="let items of item.orderProductList;let i=index">
+            <div class="row-2 flex" [navPush]="'ProductPage'" [navParams]="{'cid':items['productId']}">
+                <div class="goodImg f-fl flex-1" >
+                    <div class="wraper" >
+                        <img [src]="imageUrl+items.productLeadLittle+config.imageFormat" width="100%" height="100%"  />
+                    </div>
+                </div>
+                <div class="goodInfo f-fl flex-3" >
+                    <div class="goodName">{{items.productName}}</div>
+                </div>
+                <div class="goodStatus f-fr flex-1">
+                    <div>￥{{items.moneyPrice}}</div>
+                    <div class="packageStatus">x{{items.number}}</div>
+                </div>
+            </div>
+            <div class="row-3"  *ngIf="item.orderState !==1">
+                <a class="btn buyagain" [navPush]="'OrderDetailPage'" [navParams]="{'cid':item.id}">订单详情</a>
+                <div class="btn buyagain" (tap)="received(item.id)" *ngIf="item.orderState==4">确认收货</div>
+                <div class="btn buyagain" [navPush]="'ProductPage'" [navParams]="{'cid':items['productId']}" *ngIf="item.orderState==3 || item.orderState==4 || item.orderState==5 || item.orderState==6">再次购买</div>
+                <div class="btn buyagain" (tap)="exchange(item,items.id,0)" *ngIf="item.orderState ==5">申请退货</div>
+                <div class="btn buyagain" (tap)="exchange(item,items.id,1)" *ngIf="item.orderState ==5">申请换货</div>
+            </div>
+            </div>
+            <div class="row-3" *ngIf="item.orderState==1" >
+                <a class="btn buyagain" [navPush]="'OrderDetailPage'" [navParams]="{'cid':item.id}">订单详情</a>
+                <span class="cost"><span>应付: &yen;</span><span>{{item.moneyOrder}}</span></span>
+                <div class="btn" (tap)="gopay(item.orderSn)">去付款</div>
+            </div>
+        </div>
+    </div>
+    <div class="noorder" *ngIf="Productlist && Productlist.length==0">
+        <div class="img"></div>
+        <div class="txt">还没有任何订单呢</div>
+    </div>
+</ion-content>

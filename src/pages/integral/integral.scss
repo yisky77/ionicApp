@@ -1,0 +1,98 @@
+page-integral {
+  .p-pointsDetail {
+    padding-bottom: 5px;
+}
+.g-row {
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+}
+.p-pointsDetail .title {
+  position: relative;
+  padding: 0 20px;
+  width: 100%;
+  height:70px;
+  background: #fff;
+  font-size: 13px;
+  color: #333;
+  border-bottom: 1px solid #D9D9D9;
+  z-index: 2;
+  line-height: 1;
+}
+.p-pointsDetail .title span {
+  display: inline-block;line-height: 65px;font-size: 14px;
+  // margin-top: 0
+}
+.p-pointsDetail .title .point {
+  // margin-top: .58667rem;
+  font-size: 20px;
+  color: #B4A078;
+  font-weight: 700;
+}
+.p-pointsDetail .title span {
+  display: inline-block;
+  margin-top: 0;
+}
+.p-pointsDetail .title .u-icon {
+  position: absolute;
+  top: .70667rem;
+  right: .53333rem;
+  width: .53333rem;
+  height: .53333rem;
+}
+.m-defaultPage {
+  position: fixed;
+  top: 1.17333rem;
+  left: 0;
+  bottom: 0;
+  z-index: 0;
+  width: 100%;
+  background-color: #f4f4f4;
+  text-align: center;
+}
+.m-defaultPage .container {
+  position: absolute;
+  top: -.66667rem;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  // height: 4rem;
+  margin: auto;
+}
+.m-defaultPage .img {
+  display: inline-block;
+  vertical-align: middle;
+  width: 3.30667rem;
+  height: 3.30667rem;
+  margin-bottom: .10667rem;
+  background-size: 3.30667rem 3.30667rem;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+.m-defaultPage .txt {
+  line-height: 1;font-size:13px;
+  color: #7f7f7f;
+}
+.row-2{background-color: #fff;}
+.m-orderItem .goodImg{
+  background: none;width:90%;
+}
+.m-orderList{
+  margin: 0;
+}
+  .m-orderItem .goodImg .wraper{
+  width: auto;height: auto;
+  background: none;
+  span{
+    font-size: 15px;
+  }
+  p{
+    font-size: 12px;
+    color: #afacac;
+  }
+}
+.goodStatus{
+  font-size: 15px !important;
+    color: #868383;
+}
+}

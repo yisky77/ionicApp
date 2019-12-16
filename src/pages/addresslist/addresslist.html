@@ -1,0 +1,46 @@
+<ion-header [ngStyle]="{'background': navigatorBackColor?navigatorBackColor:'#fff'}">
+  <ion-navbar>
+    <ion-title>修改地址</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content  style="background:#f4f4f4;">
+  <ion-refresher (ionRefresh)="doRefresh($event)" pullMax='250'>
+      <ion-refresher-content style="font-size:12px;" pullingIcon="ios-arrow-dropdown-outline" pullingText="上拉刷新..." refreshingSpinner="circles" refreshingText=""></ion-refresher-content>
+  </ion-refresher>
+  <div class="m-address-list">
+    <div class="m-defaultPage m-defaultPage-noAddress" *ngIf="showpAddresslist.length==0">
+      <div class="container">
+        <div class="img"></div>
+        <div class="txt">您还没有收货地址哦</div>
+      </div>
+    </div>
+    <div class="con addcon">
+        <ion-item *ngFor="let item of showpAddresslist;let i = index">
+          <ion-label class="flex">
+            <div class="left flex-1" (tap)="changeAddress(item)">
+              <p class="uname">{{item.memberName}}</p>
+              <span class="default" *ngIf="item.state == 1">默认</span>
+              <!-- <span class="default setDefault" *ngIf="item.state !== 1">设为默认</span> -->
+            </div>
+            <div class="middle flex-4" (tap)="changeAddress(item)">
+              <div class="md-con" >
+                <p class="uip" >{{item.mobile}}</p>
+                <p class="uinfo" >{{item.addAll}}</p>
+              </div>
+            </div>
+            <div class="fl left20 flex flex-1">
+              <ion-icon name="create" class="flex-1 trash" (tap)="changeAddress(item)"></ion-icon>
+              <ion-icon name="trash" class="flex-1 trash" (tap)="trash(item.id)"></ion-icon>
+              <!-- <span (tap)="setDefault(item.id)" style="line-height: 35px;" *ngIf="item.state !== 1">设为默认</span> -->
+            </div>
+          </ion-label>
+          <!-- <ion-checkbox color="danger"></ion-checkbox> -->
+        </ion-item>
+  </div>
+</div>
+</ion-content>
+<ion-footer [navPush]="'AddAddressPage'">
+  <ion-toolbar class="m-address-list">
+      <button class="w-bottomBlockBtn w-button w-button-xxl w-button-block w-button-noRadius" > ＋ 新建地址</button>
+  </ion-toolbar>
+</ion-footer>

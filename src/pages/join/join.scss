@@ -1,0 +1,19 @@
+page-join {
+  .SubmitButton-2wG4T{margin-top:30px;}
+  .MessageLogin-FsPlX{margin-bottom:0;}
+  .App-3Q8Qb {width: 95%;}
+  .App-1EAON {   margin-bottom: 25px;padding-top:0;}
+  .MessageLogin-iYvWA{margin-top:0;}
+  ion-app.ios [padding] .scroll-content {
+    padding: 15px;
+}
+  ul li{
+    margin-bottom:15px;padding:8px;border-radius:3px;
+    img{display: block;width:100%;height:120px;margin-bottom: 10px;border-radius:3px;}
+    box-shadow: 3px 2px 8px rgba(58, 52, 52, 0.3), -1px -1px 5px rgba(58, 52, 52, 0.3);
+    p{
+      img{width:25px;height:25px;border-radius: 100%;float:left;}
+      span{color:#333;font-size: 13px;margin-left:10px;line-height: 25px;}
+    }
+  }
+}

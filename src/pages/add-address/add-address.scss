@@ -1,0 +1,25 @@
+.addresscon{
+  .text-input-ios{font-size:13px;color:#8e9093;}
+  .checkbox-ios-dark .checkbox-checked {
+    border-color: #ad2a26;
+    background-color: #ad2a26;
+  }
+  .label-ios {
+    font-size: 13px;color:#8e9093;
+  }
+  .item {
+    border-top: 1px solid rgba(211, 211, 211, .4);
+  }
+  .item.item-ios .checkbox-ios{margin:8px 10px 8px 2px;}
+}
+.add-address-list button {
+  width: 97%;
+  background: #B4282D;
+  color: #fff;
+  margin: 7px auto;
+  height: 40px;
+  font-size: 15px;
+  display: block;
+}
+.footer-ios .add-address-list.toolbar-ios:first-child .toolbar-background-ios{border-width:0;}
+.multi-picker-text, .multi-picker-placeholder{font-size: 13px;}

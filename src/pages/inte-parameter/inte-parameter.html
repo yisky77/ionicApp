@@ -1,0 +1,61 @@
+<ion-header [ngStyle]="{'background': navigatorBackColor?navigatorBackColor:'#fff'}">
+    <ion-navbar>
+      <ion-title>商品规格</ion-title>
+    </ion-navbar>
+    <ion-icon name="close"  color="light" class="pos_right" (tap)="closebtn()"></ion-icon>
+</ion-header>
+<ion-content padding>
+  <!-- <div class="modalmask" (tap)="closebtn()"></div> -->
+  <div class="maskcontent">
+    <div class="dt-paramselect" >
+      <div class="info-con flex" >
+        <div class="left f-fl flex-1">
+          <img [src]="srcimg" />
+        </div>
+        <div class="right f-fl flex-2" >
+          <div class="con">
+            <p class="price"><span><span><span >积分:</span><span> {{mallMobilePrice}}</span></span></span></p>
+            <p class="sku"><span><span><span >库存: </span><span > {{actIntegral.stock}}</span></span></span></p>
+            <p class="sku">
+              <span>已选择: {{product_attr}}</span>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="spec-con" >
+        <div #myattr id="myattr">
+          <div class="u-format" *ngFor="let item of parameter.parameters;">
+            <div class="tt">{{item.name}}</div>
+            <div class="con">
+              <span class="tab" *ngFor="let items of item.attrList;let i = index" [attr.data]="items.id">{{items.name}}</span>
+                <!-- <i class="norid">{{items.id}}</i> -->
+              <!-- </span> -->
+            </div>
+          </div>
+        </div>
+        <div class="u-format" >
+          <div class="tt">数量</div>
+          <div class="con m-selNumRow" >
+            <div class="m-selnum">
+              <i class="less" (tap)="decNum()">-</i>
+              <div class="textWrap">
+                <input type="number" [(ngModel)]="paraNum"  />
+              </div>
+              <div class="more" (tap)="incNum()">+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+      <div class="footer_bar">
+        <div class="buy"  (tap)="goBuy()">
+            立即兑换
+        </div>
+      </div>
+  </ion-toolbar>
+</ion-footer>

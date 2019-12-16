@@ -1,0 +1,110 @@
+<ion-header >
+    <ion-navbar [ngStyle]="{'background': navigatorBackColor?navigatorBackColor:'#fff'}">
+      <ion-title>优惠券</ion-title>
+    </ion-navbar>
+    <ion-toolbar>
+      <nav>
+        <div class="flex flex-align-center nav-2-bar viporder" id="nav-2-bar">
+          <div class="flex-1" *ngFor="let item of orderList;let i=index" [ngClass]="currentIndex==i?'active': ''" (tap)="currentIndex=i"><a>{{item}}</a></div>
+        </div>
+      </nav>
+  </ion-toolbar>
+  </ion-header>
+  <ion-content>
+      <ion-refresher (ionRefresh)="getRefresh($event)" pullMax='250'>
+          <ion-refresher-content style="font-size:12px;" pullingIcon="ios-arrow-dropdown-outline" pullingText="上拉刷新..." refreshingSpinner="circles" refreshingText=""></ion-refresher-content>
+      </ion-refresher>
+      <ul class="m-couponList g-row"> 
+        <li class="item" *ngFor="let items of Productlist;let i=index"> 
+          <div class="m-coupon m-coupon-disabled m-coupon-fullCut hasTag" *ngIf="currentIndex === 0 && !items.isuse && !items.timeout"> 
+              <div class="contentWrapper"> 
+                <div class="content"> 
+                <div class="left"> 
+                  <div class="desc"> 
+                    <span>{{items.couponValue}}</span> 
+                    <span class="unit">元</span>
+                  </div>
+                </div> 
+                <div class="middle"> 
+                  <div class="name name-overflow">每满{{items.minAmount}}减{{items.couponValue}}</div> 
+                  <div class="validTime">起始期: {{items.useStartTime | date:"yyyy/MM/dd HH:mm:ss"}}</div> 
+                  <div class="validTime">有效期: {{items.useEndTime | date:"yyyy/MM/dd HH:mm:ss"}}</div> 
+                </div> 
+                <a class="right" (tap)="gohome()">去使用 </a> 
+                <!-- <div class="right" (tap)="gohome()"> 
+                  <a > <button class="btn">去使用</button> </a> 
+                </div>  -->
+                </div>
+              </div>
+              <div class="couponLine"></div> 
+              <div class="bottom" (tap)="showflagbtn()"> 
+                <div class="useCondition"> 
+                <!-- <span class="txt txt-overflow" [ngClass]="{'show':showflag}">全场通用; 评价有礼; 限时购、特价等特惠商品，处于新品期的商品及详情页标注不可用券的商品</span>  -->
+                <span class="txt txt-overflow" [ngClass]="{'show':showflag}">活动敬请期待！</span> 
+                <div class="iconWapper" [ngClass]="{'show':showflag}"> 
+                  <i class="icon u-icon u-icon-couponArrow"></i> 
+                </div>
+                </div>
+              </div>
+          </div>
+          <div class="m-coupon m-coupon-disabled gray hasTag" *ngIf="currentIndex === 1 && items.isuse"> 
+              <div class="contentWrapper"> 
+                <div class="content"> 
+                  <div class="left"> 
+                    <div class="desc"> 
+                      <span>{{items.minAmount}}</span> 
+                      <span class="unit">元</span>
+                    </div>
+                  </div> 
+                  <div class="middle"> 
+                    <div class="name name-overflow">每满{{items.minAmount}}减{{items.couponValue}}</div> 
+                    <div class="validTime">起始期: {{items.useStartTime | date:"yyyy/MM/dd HH:mm:ss"}}</div> 
+                    <div class="validTime">有效期: {{items.useEndTime | date:"yyyy/MM/dd HH:mm:ss"}}</div> 
+                  </div> 
+                  <a class="right" *ngIf="items.isuse">去使用 </a> 
+                </div>
+              </div>
+              <div class="couponLine"></div> 
+              <div class="bottom" (tap)="showflagbtn()"> 
+                <div class="useCondition"> 
+                <span class="txt txt-overflow" [ngClass]="{'show':showflag}">活动敬请期待！</span> 
+                <div class="iconWapper" [ngClass]="{'show':showflag}"> 
+                  <i class="icon u-icon u-icon-couponArrow"></i> 
+                </div>
+                </div>
+              </div>
+          </div>
+          <div class="m-coupon m-coupon-disabled gray hasTag" *ngIf="currentIndex === 2 && items.timeout"> 
+              <div class="contentWrapper"> 
+                <div class="content"> 
+                <div class="left"> 
+                  <div class="desc"> 
+                    <span>{{items.minAmount}}</span> 
+                    <span class="unit">元</span>
+                  </div>
+                </div> 
+                <div class="middle"> 
+                  <div class="name name-overflow">每满{{items.minAmount}}减{{items.couponValue}}</div> 
+                  <div class="validTime">起始期: {{items.useStartTime | date:"yyyy/MM/dd HH:mm:ss"}}</div> 
+                  <div class="validTime">有效期: {{items.useEndTime | date:"yyyy/MM/dd HH:mm:ss"}}</div> 
+                </div> 
+                </div>
+              </div>
+              <div class="couponLine"></div> 
+              <div class="bottom" (tap)="showflagbtn()"> 
+                <div class="useCondition"> 
+                <span class="txt txt-overflow" [ngClass]="{'show':showflag}">活动敬请期待！</span> 
+                <div class="iconWapper" [ngClass]="{'show':showflag}"> 
+                  <i class="icon u-icon u-icon-couponArrow"></i> 
+                </div>
+                </div>
+              </div>
+          </div>
+        </li>
+      </ul>
+      <div class="noorder" *ngIf="Productlist.length==0">
+        <div class="img"></div>
+        <div class="txt">还没有任何优惠券呢</div>
+      </div>
+  </ion-content>
+  

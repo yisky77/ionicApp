@@ -1,0 +1,50 @@
+<ion-header [ngStyle]="{'background': navigatorBackColor?navigatorBackColor:'#fff'}">
+  <ion-navbar>
+    <ion-title>分类</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div class="cate_content">
+      <div class="cate_left">
+          <ion-list>
+            <ion-item *ngFor="let item of leftCate;let i=index" (tap)="getRightCateDatalist(i)" [ngClass]="currentIndex==i?'active': ''">
+              {{item.name}}
+            </ion-item>
+          </ion-list>
+      </div>
+
+      <div class="cate_right">
+        <!-- 二级分类 -->
+          <ion-row *ngIf="cateLevel == '2'">
+            <ion-col col-4 *ngFor="let item of rightCate;let i = index" [navPush]="'CategoryListPage'" [navParams]="{'cid':item['id']}">
+              <img [src]="item.image == null?'/assets/imgs/header.png':imageUrl+item.image+'?x-oss-process=image/resize,m_mfit,h_50'+config.imageFormat"/>
+              <p class="fontbold">{{item.name}}</p>    
+            </ion-col>
+          </ion-row>
+
+          <!-- 三级分类 -->
+          <ion-row *ngIf="cateLevel == '3'">
+            <ion-col col-12 *ngFor="let item of rightCate;let i = index">
+              <ion-row class="tc">
+                <ion-col col-4>
+                  <p class="fontbold">{{item.name}}</p>    
+                </ion-col>
+              </ion-row> 
+              <ion-row class="tc">
+                <ion-col col-4 *ngFor="let current of item.childs;let i=index" [navPush]="'CategoryListPage'" [navParams]="{'cid':current['id']}">
+                  <img *ngIf="item.image !== null" [src]="item.image == null?'/assets/imgs/header.png':imageUrl+current.image+'?x-oss-process=image/resize,m_mfit,h_50'+config.imageFormat"/>
+                  <p>{{current.name}}</p>    
+                </ion-col>
+              </ion-row> 
+            </ion-col>
+          </ion-row>
+
+          <ion-row [ngClass]="leftCate.length>0 && rightCate.length == 0?'showrow':''" class="tc nopro">
+            <ion-col col-12 >
+              <p>暂无商品</p>    
+            </ion-col>
+          </ion-row> 
+      </div>
+  </div>
+</ion-content>

@@ -1,0 +1,103 @@
+<ion-header  [ngStyle]="{'background': navigatorBackColor?navigatorBackColor:'#fff'}">
+    <ion-navbar>
+      <ion-title>填写订单</ion-title>
+    </ion-navbar>
+  </ion-header>
+  <ion-content class="buycontentbg">
+    <div>
+        <div class="m-shipAddress" [navPush]="'AddressPage'">
+         <div class="m-address-item item" >
+          <div >
+           <div class="left" >
+            <p class="uname">{{address.memberName}}</p>
+            <span class="default" >默认</span>
+           </div>
+           <div class="middle" >
+            <div class="md-con">
+             <p class="uip" >{{address.mobile}}</p>
+             <p class="uinfo" >{{address.addAll+address.addressInfo}}</p>
+            </div>
+           </div>
+           <i class="u-icon u-address-right" ></i>
+          </div>
+         </div>
+        </div>
+        <ul class="m-list m-summary">
+         <li class="item" >
+          <div class="m-listItem summaryItem noArrow" >
+           <div class="inner" >
+            <div >
+             <div class="left" >
+              商品合计
+             </div>
+             <div class="right" >
+              <span >积分：</span>
+              <span >{{responsedatas.actIntegral.price*pricenum}}</span>
+             </div>
+            </div>
+           </div>
+          </div></li>
+         <li class="item">
+          <div class="m-listItem summaryItem noArrow" >
+           <div class="inner">
+            <div >
+             <div class="left" >
+              运费
+             </div>
+             <div class="right" >
+              <span >&yen;</span>
+              <span >{{cartInfoVO.logisticsFeeAmount}}</span>
+             </div>
+            </div>
+           </div>
+          </div></li>
+        </ul>
+        <div class="pccontent">
+          <div class="m-goods" [navPush]="'InteProductPage'" [navParams]="{'cid':responsedatas['productId']}">
+          <ul class="m-list  noLastBorder">
+            <li class="item">
+            <div class="m-listItem  noArrow">
+              <div class="inner" >
+              <div class="m-colGood">
+                <div class="main">
+                <div class="left" >
+                  <img [src]="responsedatas.imgUrl+responsedatas.actIntegral.image"  />
+                </div>
+                <div class="right" >
+                  <div class="line1">
+                  <div class="name">
+                    <span class="nameTag"><span >{{responsedatas.product.name1}}</span><span>&nbsp;</span></span>
+                  </div>
+                  <div class="count">
+                    <span>x</span>
+                    <span>{{pricenum}}</span>
+                  </div>
+                  </div>
+                  <div class="line2" >
+                  <div class="desc" >{{responsedatas.productGoods.normName}}</div>
+                  </div>
+                  <div class="line3" >
+                  <div class="currentPrice">
+                    <span ><span >&yen;</span><span>{{responsedatas.actIntegral.price}}</span></span>
+                  </div>
+                  </div>
+                </div>
+                </div>
+                <div class="bottom"></div>
+              </div>
+              </div>
+            </div>
+            </li>
+          </ul>
+          </div>
+        </div>
+      </div>
+  </ion-content>
+  <ion-footer>
+      <ion-toolbar>
+        <div class="all_price">应付积分: {{responsedatas.actIntegral.price*pricenum}}</div>
+        <ion-buttons (tap)="goPay()" end>
+          <div color="danger" class="dopay">确认兑换</div>
+        </ion-buttons>
+      </ion-toolbar>
+  </ion-footer>

@@ -1,0 +1,26 @@
+<ion-header  [ngStyle]="{'background': navigatorBackColor?navigatorBackColor:'#fff'}">
+  <ion-navbar>
+    <ion-title>填写退换货信息</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content class="f4f4f4">
+  <ion-list>
+    <ion-item>
+      <ion-label>选择退换货类型</ion-label>
+      <ion-select [(ngModel)]="ftype" submitText="确认" cancelText="取消">
+        <ion-option value="1">退货</ion-option>
+        <ion-option value="2">换货</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+  <div class="g-row">
+    <div class="m-textarea ">
+      <textarea class="ipt" [(ngModel)]="content" placeholder="对我们网站、商品、服务，您还有什么建议吗？请告诉我们..." ></textarea>
+    </div>
+  </div>
+</ion-content>
+<ion-footer (tap)="exchangepro()">
+  <ion-toolbar class="add-address-list">
+      <button class="w-bottomBlockBtn w-button w-button-xxl w-button-block w-button-noRadius" >提交</button>
+  </ion-toolbar>
+</ion-footer>

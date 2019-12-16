@@ -1,0 +1,143 @@
+import { Component } from '@angular/core';
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
+import { StorageProvider } from '../../providers/storage/storage';
+import { ConfigProvider } from '../../providers/config/config';
+import { HttpServicesProvider } from '../../providers/http-services/http-services';
+import { UtilProvider } from '../../providers/util/util';
+
+// declare let WeixinJSBridge;
+
+@IonicPage({
+  name: 'PayPage',
+  segment: 'PayPage',
+  defaultHistory: ['HomePage']
+})
+@Component({
+  selector: 'page-pay',
+  templateUrl: 'pay.html',
+})
+
+export class PayPage {
+  public navigatorBackColor:any; 
+  public state = true;
+  public showpay = true;
+  public showAlipay = true;
+  public showWechat = true;
+  public currentpay = 'public';
+  public Nov = 'other';
+  public paySn;
+  public wxstate;
+  public alistate;
+  public resdata;
+  public create = {wxstate:false,alistate:false}
+  public order;
+  public payurl;
+  public navParamsdata;
+  public paylist = [{name:'微信支付',type:'wechatpay',state:true},{name:'支付宝支付',type:'alipay',state:false}]
+  constructor(public navCtrl: NavController, public navParams: NavParams, public storage: StorageProvider, public config:ConfigProvider,public httpService:HttpServicesProvider, public util: UtilProvider, public modalCtrl: ModalController) {
+    let data = this.storage.get('globoalSet');
+    this.navigatorBackColor = data.navigatorBackColor;
+    this.navParamsdata = this.navParams.data;
+    console.log(this.navParamsdata.url)
+    // }
+    // console.log(this.navParamsdata)
+    if(!this.navParamsdata.paySn || this.navParamsdata.paySn == null || this.navParamsdata.paySn == undefined){
+      this.paySn = this.storage.get('paySn');
+    } else {
+      this.paySn = this.navParamsdata.paySn;
+      this.storage.set('paySn',this.navParamsdata.paySn);
+    } 
+    if(!this.navParamsdata.order || this.navParamsdata.order == null || this.navParamsdata.order == undefined){
+      this.order = this.storage.get('order');
+    } else {
+      this.order = this.navParamsdata.order;
+      this.storage.set('order',this.navParamsdata.order);
+    } 
+    // console.log(this.cid);
+    console.log(this.paySn,this.order)  
+  }
+
+  ionViewDidLoad(){
+    const userAgent = window.navigator.userAgent;
+    if (/MicroMessenger/.test(userAgent)) { 
+      this.Nov = 'wechat';
+      this.currentpay = 'wechatpay';
+      this.create.wxstate = true;
+    } else if (/AlipayClient/.test(userAgent)) { 
+      this.Nov = 'alipay';
+      this.create.alistate = true;
+      this.currentpay = 'alipay';
+    } else {
+      this.create.wxstate = true;
+      this.create.alistate = false;
+      this.currentpay = 'public';
+    }
+  }
+
+  updatestate (name) {
+    if (name == 'wx') {
+      if(this.create.wxstate){
+        this.create.alistate = this.create.wxstate = false;
+        this.create.wxstate = false;
+      } else {
+        this.create.alistate = this.create.wxstate = false;
+        this.create.wxstate = true;
+      }
+    } else if (name == 'ali') {
+      if(this.create.alistate){
+        this.create.alistate = this.create.wxstate = false;
+        this.create.alistate = false;
+      } else {
+        this.create.alistate = this.create.wxstate = false;
+        this.create.alistate = true;
+      }
+    }
+  }
+
+  // 支付操作
+  submitdata() {
+    // 判断是否是app支付还是浏览器支付
+    if (this.create.alistate) this.doAlipay('alipay');
+    else this.doAlipay('wxpay');
+  }
+
+  // 去支付
+  doAlipay (type) {
+    // console.log(this.paySn)
+    var data;
+    if (!this.order) {
+      data = {paySn: this.paySn, optionsRadios:type}
+    } else {
+      data = {orderSn: this.paySn, optionsRadios:type}
+    }
+    this.util.showLoading('');
+    this.httpService.requestPostTokenDataform(this.config.requesturl + '/payindex', data, (res) => {
+      let responsedatas = res;
+      if (responsedatas.code == 200) {
+        if (type == 'alipay') {
+          var newEle = document.getElementById('newEle');
+          newEle.innerHTML = responsedatas.data;
+          document.forms[0].submit();
+        } else if (type == 'wxpay') {
+          console.log(responsedatas.data)
+          // if (this.currentpay == 'public') {
+
+          // } else {
+            location.href = responsedatas.data;
+          // }
+        }
+        this.util.dismiss(0);
+      } else if (responsedatas.code == 401) {
+        this.gologinpage();          
+      } else {
+        this.util.Toast(responsedatas.msg, 'top');
+      }
+    })
+  }
+
+  gologinpage() {
+    let profileModal = this.modalCtrl.create('LoginPage');
+    profileModal.present();
+  }
+
+}

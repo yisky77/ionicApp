@@ -1,0 +1,77 @@
+<ion-header  [ngStyle]="{'background': navigatorBackColor?navigatorBackColor:'#fff'}">
+  <!-- <ion-navbar> -->
+    <ion-title>{{logintitle}}</ion-title>
+    <!-- <ion-icon name="close"  color="light" class="pos_right" (tap)="closelogin()"></ion-icon>
+  </ion-navbar> -->
+  <ion-icon name="md-home" class="mdhome gohome" *ngIf="!config.isApp" (tap)="closelogin()"></ion-icon>
+</ion-header>
+
+<ion-content>
+  <div class="App-1EAON" *ngIf="showlogin">
+    <div class="App-3Q8Qb">
+      <div class="LoginHeader-1jXn6">
+      </div>
+      <div>
+        <div class="MessageLogin-iYvWA">
+          <section class="MessageLogin-FsPlX">
+            <input type="tel" maxlength="11" placeholder="手机号" [(ngModel)]="logininfo.mobile" />
+            <button class="CountButton-3e-kd" (tap)="getcheckcode()" *ngIf="!sendtime" [ngStyle]="{'color': navigatorBackColor?navigatorBackColor:'#b62628'}"> 获取短信验证码 </button>
+            <button class="CountButton-3e-kd" *ngIf="sendtime"> 已发送({{loadtime}})s </button>
+          </section>
+          <section class="MessageLogin-FsPlX">
+          <input type="tel" maxlength="4" placeholder="验证码" [(ngModel)]="logininfo.verifyCode" />
+          </section>
+          <!-- <div id="_umfp" style="display: inline;width: 1px; height: 1px; overflow: hidden;"></div> -->
+          <div id="slideVerify" class="nc-container"></div>
+          <section class="MessageLogin-15xD9">
+            新用户登录即自动注册，进入会员中心可设置密码登录
+          </section>
+          <button class="SubmitButton-2wG4T"  *ngIf="showlogin" (tap)="loginbtn()" [ngStyle]="{'background': navigatorBackColor?navigatorBackColor:'#fff'}"> 登录 </button>
+          <a (tap)="gologin()" class="regi" [ngStyle]="{'color': navigatorBackColor?navigatorBackColor:'#fff'}">账号密码登录</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="App-1EAON" *ngIf="!showlogin">
+    <div class="App-3Q8Qb">
+      <div class="LoginHeader-1jXn6">
+      </div>
+      <div>
+      <div class="MessageLogin-iYvWA">
+        <section class="MessageLogin-FsPlX">
+          <input type="text" maxlength="11" placeholder="手机号/账号" [(ngModel)]="logininfo1.mobile" />
+        </section>
+        <section class="MessageLogin-FsPlX">
+          <input type="password"  placeholder="密码(不少于6位数)" [(ngModel)]="logininfo1.password" />
+        </section>
+        <!-- <section class="MessageLogin-FsPlX">
+          <input type="tel"  placeholder="验证码" [(ngModel)]="logininfo.verifyCode" />
+          <div style="float:right;" class="refresh" (tap)="ChangeCheckCode()">
+            <ion-icon name="refresh-circle"></ion-icon>
+            <img [src]="config.miniappId+'/verify.html'+verifycodetime" class="checkcodeimg"/>
+          </div>
+        </section> -->
+        <div id="slideVerify" class="nc-container"></div>
+        <section class="MessageLogin-15xD9">
+          如您没有或忘记密码，可使用 <a (tap)="gologin()" [ngStyle]="{'color': navigatorBackColor?navigatorBackColor:'#fff'}">手机验证码登录</a> 后进入会员中心设置密码
+        </section>
+        <button class="SubmitButton-2wG4T" (tap)="gologin1()" [ngStyle]="{'background': navigatorBackColor?navigatorBackColor:'#fff'}"> 登录 </button>
+      </div>
+      </div>
+    </div>
+  </div>
+  <div class="otherwaycon">
+    <div class="con">
+      <span class="line"></span>
+      <span class="otherway">其他方式登录</span>
+    </div>
+    <nav class="logincontentnav">
+      <a (tap)="gologin()" ><span class="icon1"></span>
+        <p *ngIf="showlogin">账号密码</p>
+        <p *ngIf="!showlogin">手机号登录</p>
+      </a>
+      <!-- <a (tap)="wechatlogin()" *ngIf="config.isApp && config.isShare"><span class="icon2"></span>微信登录</a> -->
+      <!-- <a (tap)="qqlogin()"><span class="icon3"></span>QQ登录</a> -->
+    </nav>
+  </div>
+</ion-content>

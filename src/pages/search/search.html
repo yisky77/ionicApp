@@ -1,0 +1,32 @@
+<ion-header [ngStyle]="{'background': navigatorBackColor?navigatorBackColor:'#fff'}">
+  <ion-navbar >
+    <ion-title>搜索商品</ion-title>
+  </ion-navbar>
+</ion-header>
+<!-- <div [ngStyle]="stylefunbg(bgImg)" class="bgimg"></div> -->
+<!-- <ion-content class="bgfff searchcontent"> -->
+<ion-content class="searchcontent" [ngStyle]="{'background': bgcolor}">
+  <ion-searchbar placeholder="输入搜索内容" [(ngModel)]="searchQuery"></ion-searchbar>
+  <a class="searchbtn" (tap)="getItems(1)">搜索</a>
+  <ion-list>
+    <ion-item class="pd0" (tap)="gopageshop(items)" *ngFor="let items of searchitems">
+        <div class="flex list-dl">
+          <img [src]="imageurl+items.masterImg+'?x-oss-process=image/resize,m_mfit,h_230,w_140'+config.imageFormat" width="100" height="100">
+          <div class="padl flex-2">
+            <div class="product_name" [innerHTML]="items.name1"></div>
+            <div class="product-desript">
+                <p class="clr53">￥<span>{{items.malMobilePrice}}</span></p>
+                <p class="ratings">
+                <span>有货</span>&nbsp;&nbsp;<span>{{items.sellerId}}</span>条评价
+              </p>
+            </div>
+          </div>
+        </div>
+    </ion-item>
+    <ion-item  class="pd0 nodata" *ngIf="searchitems.length==0" style="text-align:center;border:none;">暂无数据</ion-item>
+    <ion-item  class="pd0" *ngIf="!infinite" style="text-align:center;border:none;">已经到底了</ion-item>
+</ion-list>
+<ion-infinite-scroll *ngIf="infinite" (ionInfinite)="doInfinite($event)" threshold="0">
+  <ion-infinite-scroll-content></ion-infinite-scroll-content>
+</ion-infinite-scroll>
+</ion-content>

@@ -1,0 +1,69 @@
+page-wxauthorization {
+  ion-label{
+    i{       display: inline-block;
+      margin: 8px 8px -5px 2px;
+      width: 20px;position: relative;
+      height: 20px;
+      border: 1px solid #d2d1d5;
+      border-radius: 100%;}
+    font-size: 13px;
+    color: #9a9a9a;
+    // margin: 15px 0 !important;
+    span{
+      line-height: 30px;display: inline-block;    font-size: 12px;
+      color: #303133;
+    }
+  }
+  .active i{
+    background-image:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADQAAAA0CAMAAADypuvZAAAAk1BMVEX////1PT32TlD92dr8w8P/9/f5e333X2D8u7v6mZv5hYb/+/v90ND9zc37pqf6l5j6k5T5iov5gYL4eHr3Z2j+5+j+29z91NX8tbb8q6v3WVn2UVL+8/P+7/D+6+z+4eL+3d78wMD8sbL5j5H4dHb4c3T3b3D3a2z2YmP3VFX2SEn1QkP1QUH+8fL8yMj8xsb7n6FYqsP5AAABK0lEQVRIx+3V126DQBCF4T1Ugw2mgyEucW8p7/90kXJBPGwZIvnS/yXSJ6TZ1ax4ZW5aVvb67R9g2WQtfrP2cTWKzDKQioYlGw9S/rvZxFAWugYTQpNfaSe2hzar1qAcMKiN0uxg7DxVmAmYUtm4Hbi+JBSArZB+dAPf8JAXGNFhgApocjr8VRKz0hphW+jbSvPmDUJpdryBT5A3yuBG0ElraGQBnNF3Nxis1BO/R3O9wfIRHfrPnhBzrQG56SmI0hlrcIuoUhscCZqBKrVBIEhXPBQL14eqiKIURKlNJ2gRRhSIQUfwlUP0yZuE3a5yF1dGHxcGORLhZ/EtAX5d7hSAU4nhFWw1ZiEMuamKnGruyc2HxG8En5206LtmjhjZehKEeZ4l21q8enY/pgAPtEi+YYcAAAAASUVORK5CYII=');
+    border: none;
+    background-size: 25px;
+    background-position: center;
+  }
+  .list{border-top: 10px solid #f7f7f7;}
+  .list-ios .item-block .item-inner {
+      border-bottom: none;
+  }
+  .item {
+    border-top: 0.55px solid rgba(200, 199, 204, 0.5);
+}
+.list-ios > .item-block:last-child, .list-ios > .item-wrapper:last-child .item-block {
+  border-bottom: 0.55px solid rgba(200, 199, 204, 0.5);
+}
+  .list-ios > .item-block:first-child {
+    border-top: none;
+    border-bottom: none;
+}
+  .wechatpay,.alipay{
+    width: 22px;
+    height: 20px;
+    background: url(../assets/imgs/wechatpay.png) no-repeat;
+    background-size: 20px auto;
+    display: inline-block;
+    position: relative;
+    top: 6px;margin-right:5px;
+    font-size: 12px;
+  }
+  .alipay{
+    background: url(../assets/imgs/alipay.jpg) no-repeat;
+    background-size:20px auto;
+  }
+  .m-address-list .w-bottomBlockBtn {
+    width: 95%;
+    background: #B4282D;
+    color: #fff;
+    margin: 7px auto;
+    height: 40px;
+    font-size: 15px;
+    display: block;
+}
+.showpay{ pointer-events: none; .m-address-list .w-bottomBlockBtn{background: #ccc;pointer-events: none;    border: none;}}
+
+}
+// .toastbg{
+//   background: red;
+// }
+.toast-ios .toast-wrapper {
+  // background: #b62628;
+  .toast-message{font-size: 12px;color:#fff;}
+}

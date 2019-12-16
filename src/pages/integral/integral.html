@@ -1,0 +1,48 @@
+<ion-header [ngStyle]="{'background': navigatorBackColor?navigatorBackColor:'#fff'}">
+  <ion-navbar>
+    <ion-title>我的积分</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher (ionRefresh)="getRefresh($event)" pullMax='250'>
+      <ion-refresher-content style="font-size:12px;" pullingIcon="ios-arrow-dropdown-outline" pullingText="上拉刷新..." refreshingSpinner="circles" refreshingText=""></ion-refresher-content>
+  </ion-refresher>
+  <div class="p-pointsDetail g-row">
+    <div class="title">
+      <span>我的积分：</span>
+      <span class="point">{{integraltotal}}</span>
+      <a >
+        <i class="u-icon u-icon-help-questions"></i></a>
+    </div>
+    <div class="m-defaultPage m-defaultPage-" >
+      <div class="container">
+        <div class="img"></div>
+        <div class="txt" >暂无积分明细</div>
+      </div>
+    </div>
+  </div>
+  <div class="m-orderList" *ngFor="let items of integrallist;let i=index">
+      <div class="m-orderItem first" >
+        <!-- <div class="row-1" >
+        <span class="orderId">订单编号: {{item.orderSn}}</span>
+        <span ></span>
+        </div> -->
+        <div class="packageList" >
+            <div class="row-2 flex" >
+              <div class="goodImg f-fl flex-6" >
+                  <div class="wraper" >
+                    <span>{{items.optDes}}</span>
+                    <p>{{items.createTime | date:"yyyy/MM/dd HH:mm:ss"}}</p>
+                  </div>
+              </div>
+              <div class="goodStatus f-fr flex-1">
+                  <div *ngIf="items.optType == 6 ||items.optType == 7 ||items.optType == 9 || items.optType == 12 || items.optType == 13; else elseBlock">
+                    <div style="color:#32c700;">-{{items.value}}</div></div>
+                  <ng-template #elseBlock ><div style="color:#b62628;">+{{items.value}}</div></ng-template>
+              </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</ion-content>

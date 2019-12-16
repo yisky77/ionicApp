@@ -1,0 +1,29 @@
+<ion-header [ngStyle]="{'background': navigatorBackColor?navigatorBackColor:'#fff'}">
+    <ion-navbar>
+      <ion-title>选择付款方式</ion-title>
+    </ion-navbar>
+  </ion-header>
+  <ion-content>
+      <ion-list>
+          <ion-item [hidden]="currentpay == 'alipay'"  [ngClass]="{'active':create.wxstate}">
+            <ion-label>
+              <i></i>
+              <span class="wechatpay"></span>
+              <span>微信支付</span>
+            </ion-label>
+          </ion-item>
+          <ion-item [hidden]="currentpay == 'wechatpay'"  [ngClass]="{'active':create.alistate}">
+            <ion-label>
+              <i></i>
+              <span class="alipay"></span>
+              <span>支付宝支付</span>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+        <div id="newEle"></div>
+  </ion-content>
+  <ion-footer [ngClass]="{'showpay':!create.wxstate && !create.alistate}">
+    <ion-toolbar class="m-address-list">
+        <button class="w-bottomBlockBtn w-button w-button-xxl w-button-block w-button-noRadius">去支付</button>
+    </ion-toolbar>
+  </ion-footer>

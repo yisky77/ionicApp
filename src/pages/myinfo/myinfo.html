@@ -1,0 +1,41 @@
+<ion-header  [ngStyle]="{'background': navigatorBackColor?navigatorBackColor:'#fff'}">
+  <ion-navbar>
+    <ion-title>个人信息</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+    <ion-refresher (ionRefresh)="getRefresh($event)" pullMax='250'>
+        <ion-refresher-content style="font-size:12px;" pullingIcon="ios-arrow-dropdown-outline" pullingText="上拉刷新..." refreshingSpinner="circles" refreshingText=""></ion-refresher-content>
+    </ion-refresher>
+    <div class="headerimg"><img [src]="logininfo.profilePhoto"  /></div>
+    <ion-list inset>
+      <ion-item>
+        <ion-label>昵称</ion-label>
+        <ion-input type="text" [(ngModel)]="logininfo.nickname"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>出生日期</ion-label>
+        <ion-datetime displayFormat="YYYY/MM/DD" [(ngModel)]="logininfo.birthday" [cancelText]="'取消'" [doneText]="'完成'"></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label>QQ</ion-label>
+        <ion-input type="number" [(ngModel)]="logininfo.qq"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>微信号</ion-label>
+        <ion-input type="text" [(ngModel)]="logininfo.wechatAccount"></ion-input>
+      </ion-item>
+    </ion-list>
+    <ion-list radio-group (ionChange)="updateGender($event)">
+        <ion-list-header>性别</ion-list-header>
+        <ion-item>
+          <ion-label>男</ion-label>
+          <ion-radio checked="{{logininfo.gender==1?'true':'false'}}" value="1"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>女</ion-label>
+          <ion-radio checked="{{logininfo.gender==2?'true':'false'}}" value="2"></ion-radio>
+        </ion-item>
+      </ion-list>
+    <button class="SubmitButton-2wG4T" (tap)="updateinfo()">提交修改 </button>
+</ion-content>

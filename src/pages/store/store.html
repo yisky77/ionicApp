@@ -1,0 +1,44 @@
+<ion-header  [ngStyle]="{'background': navigatorBackColor?navigatorBackColor:'#fff'}">
+  <ion-navbar>
+    <ion-title>店铺详情</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <div class="flex storepage">
+    <img [src]="imgurl+sellerStore.sellerLogo+'?x-oss-process=image/resize,m_mfit,w_50'+config.imageFormat" class="flex1">
+    <div class="flex6">
+      <p>{{sellerStore.sellerName}}</p>
+      <p>粉丝数：{{sellerStore.collectionNumber}}</p>
+    </div>
+    <div class="flex1" (tap)="collect()">
+      <ion-icon ios="ios-heart" md="md-heart" [ngClass]="{'coll':collected}"></ion-icon><p>收藏</p>
+    </div>
+  </div>
+  <div padding>
+    <a href="tel:{{sellerStore.telephone}}" style="font-size: 13px;color:#9a9a9a">电话：{{sellerStore.telephone}}</a>
+    <p style="font-size: 13px;color:#9a9a9a">地址：{{sellerStore.companyAdd}}</p>
+  </div>
+  <nav>
+    <div class="flex flex-align-center nav-2-bar" id="nav-2-bar">
+      <div class="flex-1" *ngFor="let item of topCate;let i=index" [hidden]="i=='4' || i == '2'" [ngClass]="currentIndex==i?'active': ''" (tap)="getTopCateDatalist(i)" >
+          <a>{{item}}</a>
+      </div>
+    </div>
+  </nav>
+  <div class="goods" style="padding: 10px;" >
+    <div class="goods_box goods5"  *ngFor="let item of list;let i=index"  [navPush]="'ProductPage'" [navParams]="{'cid':item['id']}">
+      <div class="imgSize g_img">
+        <img class="picimg"  [src]="storeimgUrl+item.masterImg+'?x-oss-process=image/resize,m_mfit,h_150'+config.imageFormat" style="border-radius: 5px;">
+      </div>
+      <div class="g_msg">
+        <p class="g_name">{{item.name1}}</p>
+        <div class="g_price">
+          <span>{{item.malMobilePrice}}<a>RMB</a></span>
+          <div class="g_btn">
+            <p class="buy buy1 buy2">购买</p>
+          </div>
+        </div>
+      </div>
+  </div>
+  </div>
+</ion-content>

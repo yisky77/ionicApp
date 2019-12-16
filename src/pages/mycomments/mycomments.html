@@ -1,0 +1,59 @@
+<ion-header  [ngStyle]="{'background': navigatorBackColor?navigatorBackColor:'#fff'}">
+  <ion-navbar>
+    <ion-title>我的评价</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <div class="g-row">
+        <div class="m-itemComments" >
+          <div >
+          <div class="commentsRate" >
+            <span >评分</span>
+            <ul class="m-rate" >
+              <li class="star star-grey star-yellow"></li>
+              <li class="star star-grey star-yellow"></li>
+              <li class="star star-grey star-yellow"></li>
+              <li class="star star-grey star-yellow"></li>
+              <li class="star star-grey star-yellow"></li>
+            </ul>
+            <!-- <span class="goodCmtRate">好评率:{{commentdata_statisticsVO.productCommentsHighProportion}}%</span> -->
+          </div>
+          <div >
+            <ul class="m-commentList" >
+              <li class="item" *ngFor="let item of commentslist">
+                <div class="m-comment f-pr" >
+                  <header class="" >
+                    <div class="left" >
+                      <img class="avatar" [src]="item.profilePhoto" />
+                      <span class="name" >{{item.userName}}</span>
+                      <div class="commentRate" >
+                        <ul class="m-rate" >
+                          <li class="star star-grey star-smallGrey star-yellow star-smallYellow" [hidden]="item.grade<1"></li>
+                          <li class="star star-grey star-smallGrey star-yellow star-smallYellow" [hidden]="item.grade<2"></li>
+                          <li class="star star-grey star-smallGrey star-yellow star-smallYellow" [hidden]="item.grade<3"></li>
+                          <li class="star star-grey star-smallGrey star-yellow star-smallYellow" [hidden]="item.grade<4"></li>
+                          <li class="star star-grey star-smallGrey star-yellow star-smallYellow" [hidden]="item.grade<5"></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </header>
+                  <div class="extraInfo">
+                    <span class="time" >{{item.createTime}}</span>
+                    <p class="skus" >黑色; 37</p>
+                  </div>
+                  <div class="content" >
+                    <div class="inner">{{item.content}}
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="item" [hidden]="commentslist.length !== 0">
+                <p class="nocomment">暂无评价</p>
+              </li>
+            </ul>
+          </div>
+          </div>
+        </div>
+      </div>
+</ion-content>

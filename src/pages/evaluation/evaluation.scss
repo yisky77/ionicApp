@@ -1,0 +1,217 @@
+.commentsRate {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: row nowrap;
+  -moz-flex-flow: row nowrap;
+  -ms-flex-flow: row nowrap;
+  flex-flow: row nowrap;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  align-items: center;
+  padding: 0px 0px 10px;
+  font-size: .37333rem;
+}
+.commentsRate>span {
+  font-size: 13px;
+  margin-right: 10px;
+  line-height: 20px;
+}
+.m-rate {
+  overflow: hidden;
+}
+
+.m-rate .star-yellow {
+  background-image: url(//yanxuan-static.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/star-yellow-1ad5908a3b.png);
+}
+
+.m-rate .star-orange, .m-rate .star-yellow {
+  width: .45333rem;
+  height: .44rem;
+  display: inline-block;
+  vertical-align: middle;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.m-rate .star {
+  background-image: url(//yanxuan-static.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/star-grey-6c03c05d4e.png);
+  width: 10px;
+  height: 10px;
+  float: left;
+  margin-right: .21333rem;
+}
+.m-rate .star, .m-rate .star-smallGrey {
+  display: inline-block;
+  vertical-align: middle;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.commentsRate .goodCmtRate {
+  margin-left: 10px;
+  color: #7f7f7f;
+}
+
+.m-commentList {
+  // padding-left: .4rem;
+  position: relative;
+}
+.m-commentList>.item {
+  // margin-right: .4rem;
+  line-height: 1;
+  border-top: 1px solid rgba(217, 217, 217, .4);
+  // border-bottom: 1px solid rgba(217, 217, 217, .4);
+}
+.m-comment {
+  padding-bottom: 10px;
+}
+.m-comment header {
+  display: flex;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  -webkit-justify-content: space-between;
+  -moz-justify-content: space-between;
+  justify-content: space-between;
+  padding: 10px 0 .05333rem;
+}
+
+.m-comment header, .m-downloadBanner .m-defaultBanner .brand {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  -webkit-box-align: center;
+}
+.m-comment header .left {
+  zoom: 1;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  align-items: center;
+  font-size: .37333rem;
+}
+.m-comment header .left .avatar {
+  width: 30px;
+  height: 30px;
+  margin-right: .21333rem;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.m-comment header .left .name {
+  margin: 0 10px;
+  font-size: 15px;
+}
+.u-icon-v2 {
+  background-position: 0 -151.93333rem;
+}
+
+.u-icon-v1, .u-icon-v2, .u-icon-v3, .u-icon-v4, .u-icon-v5, .u-icon-v6 {
+  display: inline-block;
+  vertical-align: middle;
+  background-image: url(//yanxuan-static.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/sprites/membership-s04853bb666-ec8b19b942.png);
+  background-repeat: no-repeat;
+  background-size: 4.4rem 154.46667rem;
+  width: .4rem;
+  height: .4rem;
+}
+.u-icon {
+  display: inline-block;
+  width: .66667rem;
+  height: .66667rem;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  vertical-align: middle;
+}
+.m-comment .commentRate {
+  margin-left: .13333rem;
+}
+.m-rate {
+  overflow: hidden;
+}
+
+.m-rate .star-smallYellow {
+  display: inline-block;
+  vertical-align: middle;
+  background-image: url(//yanxuan-static.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/star-smallYellow-34fe945be9.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  width: .36rem;
+  height: .34667rem;
+  margin-right: .16rem;
+}
+
+.m-rate .star-yellow {
+  background-image: url(//yanxuan-static.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/star-yellow-1ad5908a3b.png);
+}
+.m-rate .star-orange, .m-rate .star-yellow {
+  width: 10px;
+  height: 10px;
+  display: inline-block;
+  vertical-align: middle;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+// .m-rate .star-smallGrey {
+//   background-image: url(//yanxuan-static.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/star-smallGrey-d1aa93d5d0.png);
+//   width: 10px;
+//   height: 10px;
+//   margin-right: .16rem;
+// }
+.m-rate .star, .m-rate .star-smallGrey {
+  display: inline-block;
+  vertical-align: middle;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.m-comment .extraInfo {
+  margin-top: .24rem;
+}
+
+.m-comment .extraInfo, .m-comment .time {
+  font-size: 12px;
+  line-height: 25px;
+  color: #7f7f7f;
+}
+.m-comment .extraInfo, .m-comment .time {
+  font-size: .32rem;
+  line-height: 1;
+  color: #7f7f7f;
+}
+.m-comment .extraInfo .skus {
+  display: inline-block;
+  margin-left: .21333rem;
+}
+.m-comment .content {
+  // margin-top: .24rem;
+}
+
+.m-comment .content, .m-comment .thumbsUpWrap {
+  padding-top: 5px;
+}
+.m-comment .content .inner {
+  white-space: pre-line;
+  word-wrap: break-word;
+  word-break: break-all;
+  font-size: 12px;
+  line-height:20px;
+  font-weight: 400;
+  color: #333;
+}
+ion-app.ios [padding] .scroll-content {
+  padding: 10px;
+}
+.nocomment{    text-align: center;font-size:12px;
+  line-height: 30px;}

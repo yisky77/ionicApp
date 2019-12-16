@@ -1,0 +1,169 @@
+page-paysucess {
+  .weui-msg {
+    padding-top: 36px;
+    text-align: center;
+}
+// .weui-msg__icon-area {
+//   margin-bottom: 30px;
+// }
+
+
+.weui-icon-success {
+  font-size: 23px;
+  color: #09BB07;
+}
+.ion-ios-checkmark-circle:before {
+  content: "\f14a";
+  font-size: 80px;
+}
+.weui-icon_msg {
+  font-size: 93px;
+}
+.ion-ios-checkmark-circle {
+  color: #1AAD19;
+}
+[class^="weui-icon-"], [class*=" weui-icon-"] {
+  display: inline-block;
+  vertical-align: middle;
+  font: normal normal normal 14px/1 "weui";
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+}
+[class^="weui-icon_"]:before, [class*=" weui-icon_"]:before {
+  margin: 0;
+}
+
+.weui-icon-success:before {
+  content: "\EA06";
+}
+[class^="weui-icon-"]:before, [class*=" weui-icon-"]:before {
+  display: inline-block;
+  margin-left: .2em;
+  margin-right: .2em;
+}
+.weui-msg__title {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 50px;
+}
+.weui-btn-area {
+  margin: 1.17647059em 15px 0.3em;
+}
+
+a {
+  text-decoration: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+user agent stylesheet
+a:-webkit-any-link {
+  color: -webkit-link;
+  cursor: pointer;
+  text-decoration: underline;
+}
+.weui-msg {
+  padding-top: 36px;
+  text-align: center;
+}
+body {
+  font-family: -apple-system-font,Helvetica Neue,Helvetica,sans-serif;
+}
+body, html {
+  height: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+body {
+  line-height: 1.6;
+  font-family: -apple-system-font, "Helvetica Neue", sans-serif;
+}
+body, html {
+  height: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+html {
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+.weui-btn:after {
+  content: " ";
+  width: 200%;
+  height: 200%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  -webkit-transform: scale(0.5);
+  transform: scale(0.5);
+  -webkit-transform-origin: 0 0;
+  transform-origin: 0 0;
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+// .weui-msg__opr-area {
+//   margin-bottom: 25px;
+// }
+.weui-btn_primary {
+  background-color: #1AAD19;
+}
+.weui-btn_primary:not(.weui-btn_disabled):visited {
+  color: #FFFFFF;
+}
+.weui-btn {
+  position: relative;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 14px;
+  padding-right: 14px;
+  box-sizing: border-box;
+  font-size: 18px;
+  text-align: center;
+  text-decoration: none;
+  color: #FFFFFF;
+  line-height: 2.55555556;
+  border-radius: 5px;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  overflow: hidden;
+}
+.weui-btn:after {
+  content: " ";
+  width: 200%;
+  height: 200%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  -webkit-transform: scale(0.5);
+  transform: scale(0.5);
+  -webkit-transform-origin: 0 0;
+  transform-origin: 0 0;
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+.weui-icon_msg.weui-icon-warn {
+  color: #F76260;
+}
+
+.weui-icon_msg {
+  font-size: 93px;
+}
+[class^="weui-icon_"]:before, [class*=" weui-icon_"]:before {
+  margin: 0;
+}
+.ion-ios-alert:before {
+  content: "\f104";
+  font-size: 80px;
+}
+.weui-icon-warn:before {
+  content: "\EA0B";
+}
+[class^="weui-icon-"]:before, [class*=" weui-icon-"]:before {
+  display: inline-block;
+  margin-left: .2em;
+  margin-right: .2em;
+}
+}

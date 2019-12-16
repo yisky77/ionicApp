@@ -1,0 +1,17 @@
+<ion-header [ngStyle]="{'background': navigatorBackColor?navigatorBackColor:'#fff'}">
+    <ion-navbar>
+      <ion-title>店铺列表</ion-title>
+    </ion-navbar>
+  </ion-header>
+  <ion-content padding>
+    <ul>
+      <li *ngFor="let items of sellerlist"  [navPush]="'StorePage'" [navParams]="{'sid':items.id}">
+        <img [src]="imgurl+items.sellerImage+'?x-oss-process=image/resize,m_mfit,h_200'+config.imageFormat" />
+        <p>
+          <img [src]="imgurl+items.sellerLogo+'?x-oss-process=image/resize,m_mfit,h_30'+config.imageFormat" />
+          <span>{{items.sellerName}}</span>
+        </p>
+      </li>
+    </ul>
+  </ion-content>
+  

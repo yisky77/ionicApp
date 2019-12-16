@@ -1,0 +1,18 @@
+<ion-header [ngStyle]="{'background': navigatorBackColor?navigatorBackColor:'#fff'}">
+  <ion-navbar>
+    <ion-title>文章详情</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <p class="title">{{content.title}}</p>
+  <p class="createTime">{{content.createTime | date:"yyyy/MM/dd HH:mm:ss"}}  浏览量: {{content.browseCount}}</p>
+  
+  <img [src]="imgurl+content.image" />
+  <!-- <p class="title">{{content.newsSummary}}</p> -->
+  <div [innerHTML]="content.content"></div>
+  <div class="tc" >
+    <ion-icon ios="ios-heart" md="md-heart" (tap)="dianzan()" [ngClass]="{'red':collected}"></ion-icon>
+    <p>点赞{{content.collectionCount}}</p>
+  </div>
+
+</ion-content>

@@ -1,0 +1,203 @@
+page-invoice {
+  .m-invoiceView {
+    padding-bottom: 1.6rem;
+    background: #f4f4f4;
+}
+
+.g-row {
+    width: 10rem;
+    margin-right: auto;
+    margin-left: auto;
+}
+.m-invoiceView .block-1 {
+  padding: 0 0 .4rem .4rem;
+}
+
+.m-invoiceView .block {
+  background: #fff;
+}
+.m-invoiceView .block-1 .line {
+  padding-right: 0;
+  margin-left: 0;
+  border-bottom: 1px solid rgba(0,0,0,.2);
+}
+
+.m-invoiceView .line {
+  position: relative;
+  height: 1.38667rem;
+  padding-right: .4rem;
+  margin-left: .4rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  align-items: center;
+  font-size: .37333rem;
+  border-top: 1px solid rgba(0,0,0,.2);
+}
+.m-invoiceView .line .tt {
+  margin-right: .4rem;
+  line-height: 1.38667rem;
+}
+
+.m-invoiceView .tt {
+  font-size: .37333rem;
+  color: #7f7f7f;
+  line-height: 1;
+}
+.m-invoiceView .line .content {
+  color: #333;
+  line-height: 1.38667rem;
+}
+.m-invoiceView .block-1 .tip {
+  margin-top: .32rem;
+  margin-bottom: -.08rem;
+  padding-right: .4rem;
+}
+
+.m-invoiceView .tip {
+  margin-top: .4rem;
+  font-size: .32rem;
+  color: #666;
+  line-height: .48rem;
+}
+.m-invoiceView .block+.block {
+  margin-top: .26667rem;
+}
+
+.m-invoiceView .block-2 {
+  position: relative;
+}
+.m-invoiceView .block {
+  background: #fff;
+}
+.m-invoiceView .line {
+  position: relative;
+  height: 1.38667rem;
+  padding-right: .4rem;
+  margin-left: .4rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  align-items: center;
+  font-size: .37333rem;
+  border-top: 1px solid rgba(0,0,0,.2);
+}
+.m-invoiceView .titleInputs .tt {
+  margin-right: .48rem;
+}
+
+.m-invoiceView .line .tt {
+  margin-right: .4rem;
+  line-height: 1.38667rem;
+}
+.m-invoiceView .tt {
+  font-size: .37333rem;
+  color: #7f7f7f;
+  line-height: 1;
+}
+.m-invoiceView .type .tag-sel {
+  border-color: #b4282d;
+  color: #b4282d;
+}
+
+.m-invoiceView .type .tag {
+  display: inline-block;
+  margin-right: .32rem;
+  padding: 0 .33333rem;
+  line-height: .74667rem;
+  height: .74667rem;
+  font-size: .37333rem;
+  border-radius: 4px;
+  border: 1px solid #999;
+  color: #333;
+}
+.m-invoiceView .padding6 .m-ipt {
+  padding-left: .21333rem;
+}
+.m-invoiceView .line .m-ipt {
+  border: none;
+  padding: 0;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  -moz-box-flex: 1;
+  -moz-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  color: #333;
+}
+
+.m-ipt {
+  padding: 0 .26667rem;
+  height: .93333rem;
+  border: 1px solid rgba(0,0,0,.15);
+  border-radius: 4px;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  -webkit-justify-content: space-between;
+  -moz-justify-content: space-between;
+  justify-content: space-between;
+}
+.ReactTabs .ReactTabs__TabList, .m-ipt {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+}
+.m-ipt .ipt {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  -moz-box-flex: 1;
+  -moz-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  line-height: .66667rem;
+  font-size: .37333rem;
+  border: none;
+  color: rgba(0,0,0,.8);
+  background-color: transparent;
+}
+.u-icon-clearIpt {
+  background-image: url(//yanxuan-static.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/clearIpt-f71b83e3c2.png);
+}
+
+.u-icon {
+  display: inline-block;
+  width: .66667rem;
+  height: .66667rem;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  vertical-align: middle;
+}
+.m-invoiceView .line .tt {
+  margin-right: .4rem;
+  line-height: 1.38667rem;
+}
+
+.m-invoiceView .tt {
+  font-size: .37333rem;
+  color: #7f7f7f;
+  line-height: 1;
+}
+.m-invoiceView .block-4 {
+  padding-left: .4rem;
+  background: #f4f4f4;
+}
+}

@@ -1,0 +1,47 @@
+<ion-header  [ngStyle]="{'background': navigatorBackColor?navigatorBackColor:'#fff'}">
+  <ion-navbar>
+    <ion-title>建议反馈</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content class="f4f4f4">
+    <ion-list>
+      <ion-item>
+        <ion-label>反馈类型</ion-label>
+        <ion-select [(ngModel)]="feedbacktype" submitText="确认" cancelText="取消">
+          <ion-option value="1">pc建站</ion-option>
+          <ion-option value="2">微站</ion-option>
+          <ion-option value="3">App</ion-option>
+          <ion-option value="4">微信小程序</ion-option>
+          <ion-option value="5">支付宝小程序</ion-option>
+          <ion-option value="6">百度小程序</ion-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+  <div class="g-row">
+    <div class="m-textarea ">
+      <textarea class="ipt" [(ngModel)]="content" placeholder="对我们网站、商品、服务，您还有什么建议吗？请告诉我们..." ></textarea>
+    </div>
+    <div class="m-contact" >
+      <div class="m-returnField">
+      <h3 class="title" >手机号码</h3>
+      <div class="cnt" >
+        <ul class="m-list " >
+        <li class="item" >
+          <div class="m-listItem noArrow" >
+          <div class="inner" >
+            <input class="ipt" type="tel" placeholder="方便我们与你联系" [(ngModel)]="phone"  />
+            <i class="clear" (tap)="clearphone()"></i>
+          </div>
+          </div>
+        </li>
+        </ul>
+      </div>
+      </div>
+    </div>
+  </div>
+</ion-content>
+<ion-footer (tap)="submit()">
+  <ion-toolbar class="add-address-list">
+      <button class="w-bottomBlockBtn w-button w-button-xxl w-button-block w-button-noRadius" >提交</button>
+  </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,20 @@
+
+  <ion-tabs [ngClass]="{'hidepic': tabBarType !== '1'}" [ngStyle]="{'background': bottomcolor?bottomcolor:'#fff','color': fscolor?fscolor:'#000'}">
+    <ion-tab [root]="tab1Root" tabTitle="{{tabslist[0].name}}" show="{{showtabs}}" (ionSelect)='getTabsNum(tabslist[0],0)' tabIcon="{{tabsNums==0?tabslist[0].icon:tabslist[0].selecticon}}"></ion-tab>
+    <ion-tab [root]="tabslist[1].id !== 0?tab2Root:null" tabTitle="{{tabslist[1].name}}" show="{{showtabs}}" (ionSelect)='getTabsNum(tabslist[1],1)' tabIcon="{{tabsNums==1?tabslist[1].icon:tabslist[1].selecticon}}"></ion-tab>
+    <ion-tab [root]="tabslist[2].id !== 0?tab3Root:null" tabTitle="{{tabslist[2].name}}" show="{{showtabs}}" *ngIf="getlist.length>=3" (ionSelect)='getTabsNum(tabslist[2],2)' tabIcon="{{tabsNums==2?tabslist[2].icon:tabslist[2].selecticon}}"></ion-tab>
+    <ion-tab [root]="tabslist[3].id !== 0?tab4Root:null" tabTitle="{{tabslist[3].name}}" show="{{showtabs}}" *ngIf="getlist.length>=4" (ionSelect)='getTabsNum(tabslist[3],3)' tabIcon="{{tabsNums==3?tabslist[3].icon:tabslist[3].selecticon}}"></ion-tab>
+    <ion-tab [root]="tabslist[4].id !== 0?tab5Root:null" tabTitle="{{tabslist[4].name}}" show="{{showtabs}}" *ngIf="getlist.length>=5" (ionSelect)='getTabsNum(tabslist[4],4)' tabIcon="{{tabsNums==4?tabslist[4].icon:tabslist[4].selecticon}}"></ion-tab>
+  </ion-tabs>
+<!-- [root]	Page	指定tab希望加载的页面
+tabTitle	string	tab上显示的标题
+tabIcon	string	tab上显示的图标
+tabBadge	string	tab上显示的角标数字
+tabBadgeStyle	string	角标数字的颜色
+enabled	boolean	tab是否可用，默认为true
+show	boolean	tab是否显示
+[rootParams]	object	tab上传递的参数
+tabUrlPath	string	点击tab时跳转的页面url
+swipeBackEnabled	boolean	是否支持滑动后退
+tabsHideOnSubPages	boolean	在子页面是否隐藏
+(ionSelect)	方法	tab select 方法 -->

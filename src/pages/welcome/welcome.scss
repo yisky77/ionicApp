@@ -1,0 +1,47 @@
+
+ion-slide {
+  background-color: #eeeeee;
+  height: 100% !important;
+  width: 100% !important;
+  span{
+    position: absolute;
+    bottom: 12%;
+    right: 2%;
+    color: #fff;
+    font-size: 15px;
+    border-radius: 10px;
+    display: block;
+    background: #9E9E9E;
+    width: 40px;
+    line-height: 25px;
+    height: 25px;
+  }
+}
+ion-slides.showpic{
+  animation: all 2s ease;
+  -webkit-animation: all 2s ease;
+  // transform: scale(0.4);
+}
+ion-slide img {
+  height: 100% !important;
+  width: 100% !important;
+}
+
+ion-slide .buttonstart{width:100px;height:40px;position: absolute;left:0;right:0;bottom:20%;margin: auto;line-height:40px;
+  color: #fff;
+}
+
+.showstartpage {
+  background-color: #eeeeee;
+  height: 100% !important;
+  width: 100% !important;
+  &.showpic{
+    animation: all 2s ease;
+    -webkit-animation: all 2s ease;
+    // transform: scale(0.4);
+  }
+  img {
+    height: 100% !important;
+    width: 100% !important;
+  }
+}

@@ -1,0 +1,91 @@
+<ion-header [ngStyle]="{'background': navigatorBackColor?navigatorBackColor:'#fff'}">
+  <ion-navbar>
+    <ion-title>发票</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+    <div class="g-row m-invoiceView">
+        <div class="block block-1">
+         <div class="line">
+          <div class="tt">
+           发票类型
+          </div>
+          <div class="content">
+           电子普通发票
+          </div>
+         </div>
+         <div class="tip" >
+          电子普通发票是税局认可的有效凭证，其法律效力、基本用途及使用规定同纸质发票
+         </div>
+        </div>
+        <div class="block block-2">
+         <div class="line titleInputs" style="border:none;">
+          <div class="tt">
+           *发票抬头
+          </div>
+          <ul class="type" >
+           <li class="tag tag-sel" >个人</li>
+           <li class="tag" >单位</li>
+          </ul>
+         </div>
+         <div class="block block-2">
+          <div class="line padding6" >
+           <div class="m-ipt " >
+            <input type="text" class="ipt" placeholder="请输入个人或姓名" value="个人" maxlength="100" />
+            <i class="icon u-icon u-icon-clearIpt" style="display:none;" ></i>
+           </div>
+          </div>
+         </div>
+         <div>
+          <div class="line">
+           <div class="tt">
+            发票内容
+           </div>
+           <div class="m-ipt">
+            明细
+           </div>
+           <i class="icon-normal u-icon-helpIcon" ></i>
+          </div>
+          <div class="line" >
+           <div class="tt">
+            发票金额
+           </div>
+           <div class="content" >
+            &yen;837
+           </div>
+          </div>
+         </div>
+         <ul class="history f-hide" ></ul>
+        </div>
+        <div class="block block-3" >
+         <div class="line" style="border:none;" >
+          <div class="tt" >
+           *收票人手机
+          </div>
+          <div class="m-ipt " >
+           <input type="tel" class="ipt" placeholder="开好发票通知您" value="176****6201" maxlength="11"  />
+           <i class="icon u-icon u-icon-clearIpt" style="display:none;" ></i>
+          </div>
+         </div>
+         <div class="line" >
+          <div class="tt">
+           收票人邮箱
+          </div>
+          <div class="m-ipt " >
+           <input type="email" class="ipt" placeholder="用于接收电子发票" value="yd.2df4cd2dde894cbc8@163.com" maxlength=""  />
+           <i class="icon u-icon u-icon-clearIpt" style="display: none;" ></i>
+          </div>
+         </div>
+        </div>
+        <div class="block block-4">
+         <div class="tip" >
+          <span ><span >发票须知:</span><br /><span >1.&nbsp;&nbsp;依照税局最新开票法规，纸质普通发票和电子普通发票，开具内容均为明细</span><br/><span >2.&nbsp;因发货仓库所在地货权归属政策原因，订单可能为您拆分开具多张发票</span><br /><span >3.&nbsp;开票金额为用户实际支付的金额（不含礼品卡与不支持该发票类型的商品实付金额）</span><br  /><span >4.&nbsp;电子发票可在确认收货后，在“订单详情页”或“售后服务-我的发票”下载</span><br  /><span >5.&nbsp;未随箱寄出的纸质发票会在发货后15-30个工作日单独寄出</span><br/><span >6.&nbsp;增值税专用发票将会在所有包裹发货后15-30个工作日单独寄出</span><br /><span>7.&nbsp;单笔订单只支持开具一种类型的发票</span><br/><span >8.&nbsp;年购订单发票随每期子单寄出</span></span>
+         </div>v>
+        </div>
+       </div>
+</ion-content>
+<ion-footer (tap)="savedata()" [ngClass]="{'showpay':!showpay}">
+    <ion-toolbar class="m-address-list">
+        <button class="w-bottomBlockBtn w-button w-button-xxl w-button-block w-button-noRadius">保存</button>
+    </ion-toolbar>
+  </ion-footer>

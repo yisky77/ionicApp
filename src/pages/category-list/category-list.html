@@ -1,0 +1,48 @@
+<ion-header [ngStyle]="{'background': navigatorBackColor?navigatorBackColor:'#fff'}">
+  <ion-navbar>
+    <ion-title>分类详情</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <div class="containe" id="container">
+        <nav>
+            <div class="flex flex-align-center nav-2-bar" id="nav-2-bar">
+                <div class="flex-1" *ngFor="let item of topCate;let i=index" [ngClass]="currentIndex==i?'active': ''" (tap)="getshoplist(i,false)" >
+                    <a>{{item}}</a>
+                </div>
+            </div>
+        </nav>
+    
+      <div class="listbox">
+              <a class="block">
+                  <dl class="flex list-dl" *ngFor="let item of shopCatelist;let i = index" [navPush]="'ProductPage'" [navParams]="{'cid':item['id']}">
+                      <dt>
+                        <img [src]="imageUrl+item.masterImg+'?x-oss-process=image/resize,m_mfit,w_100'+config.imageFormat" alt="" width="100" height="100">
+                      </dt>
+                      <dd class="padl flex-2">
+                          <div class="product_name">{{item.name1}}</div>
+                          <div class="product-desript">
+                            <p class="clr53">￥<span class="red">{{item.malMobilePrice}}</span></p>
+                            <p class="ratings">
+                            <span style="font-size: 14px;color:#848689">有货 </span>
+                            <span class="red">{{item.commentsNumber}}</span> 条评价
+                            </p>
+                          </div>
+                      </dd>
+                  </dl>
+              </a>
+              <!-- <ion-infinite-scroll (ionInfinite)="doInfinite($event)"> 
+                 <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="加载中..."></ion-infinite-scroll-content>
+              </ion-infinite-scroll> -->
+              <ion-infinite-scroll threshold="100px" (ionInfinite)="doInfinite($event)">
+                  <ion-infinite-scroll-content
+                    loadingSpinner="bubbles"
+                    loadingText="正在加载...">
+                  </ion-infinite-scroll-content>
+                </ion-infinite-scroll>
+              <div id="product_list_more_json_no" class="text-center font14 pad-top2" *ngIf="showalltxt">已展示全部商品</div>
+        </div>
+    
+    </div>
+</ion-content>

@@ -1,0 +1,155 @@
+.m-addressManager .m-address-list {
+  background: #fff;
+  margin-bottom: .8rem;
+}
+.op{
+  opacity: .5;pointer-events: none;
+}
+.m-defaultPage {
+  width: 100%;
+  height: 100%;;
+  background-color: #f4f4f4;
+  text-align: center;
+}
+.m-defaultPage .container {
+  position: absolute;
+  top: -100px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 150px;
+  margin: auto;
+}
+.m-defaultPage-noAddress .img {
+  background-image: url(//yanxuan-static.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/noAddress-26d570cefa.png);
+}
+
+.m-defaultPage .img {
+  display: inline-block;
+  vertical-align: middle;
+  width: 130px;
+  height: 130px;
+  background-size: 130px auto;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+.m-defaultPage .txt {
+  font-size: 13px;
+  line-height: 20px;
+  color: #7f7f7f;
+}
+.m-address-list .w-bottomBlockBtn {
+  width: 90%;
+  background: #f4f4f4;
+  color: #B4282D;
+  border: 1px solid #B4282D;
+  border-radius: 2px;
+  margin: 7px auto;
+  height: 40px;font-size: 15px;
+  display: block;
+}
+.footer-ios .m-address-list.toolbar-ios:first-child .toolbar-background-ios{border-width:0;}
+
+
+// .m-addressManager .m-address-list .list>li {
+//   padding-left: .4rem;
+// }
+// .m-address-item {
+//   position: relative;
+//   // padding: .53333rem 1.14667rem .53333rem .08rem;
+//   border-bottom: 1px solid #d9d9d9;
+//   text-align: left;
+//   line-height: .48rem;
+//   font-size: .37333rem;
+//   color: #333;
+// }
+// .m-address-item .left {
+//   position: relative;
+//   float: left;text-align: center;
+//   width: 15%;
+//   margin-right: 0;
+// }
+.addcon {
+  // .label-ios{margin: 0;}
+  .item{border-top: 1px solid rgba(211, 211, 211, 0.5)}
+  .md-con{padding-left:10px;}
+  .item-inner{border:none !important;}
+  .uip,.uinfo{font-size: 13px;}
+  .uname {
+    margin-bottom: 0px;
+    font-size: 13px;text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.default{text-align: center;display: block;
+  border: 1px solid #b4282d;color:#b4282d;
+    border-radius: 2px;
+    width: 30px;margin:0 auto;
+    &.setDefault{
+      border:none;width:50px;
+    }
+}
+}
+// [data-dpr="2"] .m-address-item .default {
+//   border-width: 2px;
+// }
+
+// .m-address-item .default {
+//   display: block;
+//   width: 30px;
+//   font-size: 12px;
+//   line-height: 15px;
+//   text-align: center;
+//   color: #b4282d;
+//   border-radius: 3px;
+//   border: 1px solid #b4282d;
+//   margin: 0 auto;
+// }
+// .m-address-item .middle {
+//   overflow: hidden;width:65%;float: left;
+// }
+// .m-address-item .u-icon {
+//   position: absolute;
+//   top: 0;
+//   bottom: 0;
+//   right: .21333rem;
+//   margin: auto;
+// }
+// .m-address-item .uip {
+//   line-height: 25px;    font-size: 15px;
+//   margin-bottom: .08rem;
+// }
+// .m-address-item .uinfo {
+//   font-size: 14px;
+//   color: #666;
+// }
+// .u-address-bg.u-icon {
+//   display: block;
+//   width: 100%;
+//   height: 4px;
+//   background: url(../../assets/imgs/addressbg.png) repeat-x;
+//   background-size: auto 4px;
+// }
+// .addcon ul li{
+//   padding: 0 0px 10px;
+// }
+// .ion-ios-trash{ width:30px;  margin: 8px 0px;color: #9b9b9b;text-align: center}
+// .ion-ios-create{  width:30px;  margin: 8px 0px;color: #9b9b9b;text-align: center}
+// .ion-ios-trash:before{font-size: 30px;}
+// .ion-ios-create:before{font-size: 30px;}
+// .cl::after{content:'';display: block;clear: both;}
+// .pb10{
+//   padding-bottom: 20px;
+// }
+// .addcon{
+//   position: relative;
+//     z-index: 100;
+//     background: #f4f4f4;
+// .list{margin-top: 15px !important;}
+// }
+// .left20{width:20%;}
+.flex-3{flex:6;}
+.addcon{
+  border-bottom: 1px solid #e5e5e5;
+}

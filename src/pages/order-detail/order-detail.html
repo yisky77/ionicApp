@@ -1,0 +1,130 @@
+<ion-header  [ngStyle]="{'background': navigatorBackColor?navigatorBackColor:'#fff'}">
+  <ion-navbar>
+    <ion-title>订单详情</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+    <div class="m-orderDetail">
+      <div class="m-addressInfo" >
+       <div class="u-icon u-address-bg u-ribbons-top" ></div>
+       <ul >
+        <li><span class="label name" >{{Productlist.name}}</span><span class="value" >{{Productlist.mobile}}</span></li>
+        <li ><span class="value" style="color:#7F7F7F;">{{Productlist.addressAll+Productlist.addressInfo}}</span></li>
+        <span ></span>
+       </ul>
+      </div>
+      <div class="m-packageItem" *ngFor="let item of Productlist.orderProductList;let i=index">
+       <div class="packageInfo" >
+        <!-- <span class="packageName"><span >包裹</span><span >1</span><span >&nbsp;</span><span class="f-color999"></span><span >&nbsp;</span><span ></span></span> -->
+        <span class="packageStatus f-fr" *ngIf="Productlist.orderState == 1 || Productlist.orderState == 2 || Productlist.orderState == 3" (tap)="cancelOrder()">取消订单</span>
+        <span class="packageStatus f-fr" *ngIf="Productlist.orderState == 1">未付款</span>
+        <span class="packageStatus f-fr" *ngIf="Productlist.orderState == 2">待确认</span>
+        <span class="packageStatus f-fr" *ngIf="Productlist.orderState == 3">待发货</span>
+        <span class="packageStatus f-fr" *ngIf="Productlist.orderState == 4">已发货</span>
+        <span class="packageStatus f-fr" *ngIf="Productlist.orderState == 5">已完成</span>
+        <span class="packageStatus f-fr" *ngIf="Productlist.orderState == 6">已取消</span>
+        <span class="packageStatus f-fr" *ngIf="Productlist.orderState == 7">待拼团</span>
+        <div class="btn buyagain" (tap)="exchange(item,0)" *ngIf="Productlist.orderState == 5">申请退货</div>
+        <div class="btn buyagain" (tap)="exchange(item,1)" *ngIf="Productlist.orderState == 5">申请换货</div>
+       </div>
+       <ul class="m-list  noLastBorder" >
+        <li class="item">
+        <li class="item" >
+         <div class="m-listItem noArrow" >
+          <div class="inner" >
+           <div class="m-colGood" >
+            <div class="main">
+             <div class="left">
+              <img [src]="imageUrl+item.productLeadLittle+config.imageFormat" />
+             </div>
+             <div class="right">
+              <div class="line1">
+               <div class="name">
+                <span>{{item.productName}}</span>
+               </div>
+               <div class="count">
+                <span >x</span>
+                <span>{{item.number}}</span>
+               </div>
+              </div>
+              <div class="line2">
+               <div class="desc">
+                {{item.specInfo}}
+               </div>
+              </div>
+              <div class="line3" >
+               <div class="currentPrice">
+                <span ><span >&yen;</span><span>{{item.moneyPrice}}</span></span>
+               </div>
+              </div>
+             </div>
+            </div>
+            <div class="bottom" ></div>
+           </div>
+          </div>
+         </div></li>
+       </ul>
+       <span ></span>
+      </div>
+      <div class="m-invoice"></div>
+      <div class="m-orderItem">
+       <div class="itemWrap">
+        <div class="item">
+         <span class="label">订单编号：</span>
+         <span class="txt">{{Productlist.orderSn}}</span>
+        </div>
+        <div class="item">
+         <span class="label">下单时间：</span>
+         <span class="txt">{{Productlist.updateTime | date:"yyyy/MM/dd HH:mm:ss"}}</span>
+        </div>
+       </div>
+      </div>
+      <div class="m-payInfo">
+       <ul>
+        <li>
+          <div>
+            <span class="label">支付方式：</span>
+            <span class="value"><span > </span><span>{{Productlist.paymentName}}</span></span>
+          </div>
+          <div>
+          <span class="label">支付状态</span>
+          <span class="value" ><span > </span><span>{{Productlist.paymentStatus == 0?'已付款':'待支付'}}</span></span>
+          </div>
+          <div>
+            <span class="label">商品合计：</span>
+            <span class="value" ><span >&yen; </span><span>{{Productlist.moneyProduct}}</span></span>
+          </div>
+          <div>
+            <span class="label">优惠总金额：</span>
+            <span class="value" ><span >&yen; </span><span>{{Productlist.moneyDiscount}}</span></span>
+            </div>
+          <div>
+            <span class="label" >是否评价：</span>
+            <span class="value"><span></span><span>{{Productlist.evaluateState == 1?'未评价':'已评价'}}</span></span>
+            </div>
+            <div>
+            <span class="label" >运费：</span>
+            <span class="value"><span >&nbsp;&yen; </span><span>{{Productlist.moneyLogistics}}</span></span>
+            </div>
+        </li>
+       </ul>
+       <div class="real" >
+        <span class="label f-colorRed">应付合计：</span>
+        <span class="value f-colorRed"><span>&yen; </span><span>{{Productlist.moneyOrder}}</span></span>
+       </div>
+      </div>
+      <div class="m-points" >
+        <a class="pointsContent">物流信息：</a>
+        <a class="pointsContent">快递公司：{{Productlist.logisticsName}}</a>
+        <a class="pointsContent">快递单号：{{Productlist.logisticsNumber}}</a>
+        <a class="pointsContent" *ngFor="let item of orderLogList;let i=index">
+         <span>{{item.content}}</span>
+          <span></span>
+          <span class="right">
+            <span>{{item.createTime | date:"yyyy/MM/dd HH:mm:ss"}}</span>
+            <!-- <i class="u-icon u-icon-point-arrowRight"></i> -->
+          </span>
+        </a>
+      </div>
+     </div>
+</ion-content>

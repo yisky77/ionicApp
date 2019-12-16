@@ -1,0 +1,191 @@
+<ion-header [ngStyle]="{'background': navigatorBackColor?navigatorBackColor:'#fff'}">
+    <ion-navbar>
+      <ion-title>积分兑换</ion-title>
+    </ion-navbar>
+  </ion-header>
+  <ion-content class="shopDetail">
+    <ion-refresher (ionRefresh)="doRefresh($event)" pullMax='250'>
+        <ion-refresher-content style="font-size:12px;" pullingIcon="ios-arrow-dropdown-outline" pullingText="上拉刷新..." refreshingSpinner="circles" refreshingText=""></ion-refresher-content>
+    </ion-refresher>
+    <ion-slides speed="500" pager="true" paginationType="bullets" loop="false">    
+        <img [src]="imageUrl+actIntegral_image+'?x-oss-process=image/resize,m_mfit,w_500'+config.imageFormat"/>
+    </ion-slides>
+    <div class="dt-section-1" *ngIf="shangjia">
+        <div class="m-detailBaseInfo" >
+         <div class="content" >
+          <div class="info" >
+           <div class="name">
+            {{productname1}}
+           </div>
+           <!-- <div class="desc">
+              {{productname2}}
+           </div> -->
+           <div class="price" >
+            <span class="priceArea" ><span class="currentPrice" ><span >积分:</span><span >{{mallMobilePrice}}</span></span></span>
+           </div>
+          </div>
+          <div class="comment" (tap)="getevaluation()">
+           <div class="wrap" >
+            <div class="num" >{{evaluationlength}}+</div>
+            <div class="com">用户评价</div>
+            <div class="more" >查看</div>
+           </div>
+          </div>
+         </div>
+         <div class="specSelect" (tap)="getParameter()">
+            <div class="m-listItem " >
+             <div class="inner" >
+              <div class="inner" >
+               <span class="it">规格: {{product_attr}}</span>
+              </div>
+             </div>
+             <i class="icon u-icon u-address-right"></i>
+            </div>
+          </div>
+            <!-- <div class="specSelect" (tap)="getAddress()">
+                <div class="m-listItem " >
+                  <div class="inner" >
+                  <div class="inner" >
+                    <span class="it">配送：{{address}}</span>
+                  </div>
+                  </div>
+                  <i class="icon u-icon u-address-right"></i>
+                </div>
+            </div> -->
+            <div class="service-wraper dt-section" (tap)="openService()">
+                <div >
+                 <div class="m-serviceEntry">
+                  <div class="left" >
+                   服务：
+                  </div>
+                  <div class="right ">
+                   <div class="right-item-wraper">
+                    <div class="right-item">
+                     支持30天无忧退换货
+                    </div>
+                    <div class="right-item">
+                     48小时快速退款
+                    </div>
+                   </div>
+                   <div class="right-item-wraper">
+                    <div class="right-item">
+                     满88元免邮费
+                    </div>
+                    <div class="right-item">
+                     网易自营品牌
+                    </div>
+                   </div>
+                   <div class="right-item-wraper">
+                    <div class="right-item">
+                     国内部分地区无法配送
+                    </div>
+                   </div>
+                  </div>
+                  <i class="icon u-icon u-address-right"></i>
+                 </div>
+                </div>
+            </div>
+            <div class="specSelect" (tap)="getevaluation()">
+              <div class="m-listItem">
+                <div class="inner">
+                <div class="inner">
+                  <span class="it">用户评价 ({{evaluationlength}}+)</span>
+                  <span class="it" class="percent">好评率{{productCommentsHighProportion}}%</span>
+                </div>
+                </div>
+                <i class="icon u-icon u-address-right"></i>
+              </div>
+            </div>
+            <div class="m-itemDetail">
+                <div class="dt-section dt-section-1">
+                 <!-- <div class="m-attrCon">
+                  <div class="attrList" >
+                   <div class="tt">
+                    商品参数
+                   </div>
+                   <div class="item" >
+                    <div class="left" >
+                     商品名称
+                    </div>
+                    <div class="right">
+                     <div class="con line30">
+                      {{shopcanshu_productname1}}
+                     </div>
+                    </div>
+                   </div>
+                   <div class="item">
+                    <div class="left" >
+                     店铺
+                    </div>
+                    <div class="right" >
+                     <div class="con line30" >
+                        {{shopcanshu_shopname}}
+                     </div>
+                    </div>
+                   </div>
+                   <div class="item" >
+                    <div class="left">
+                     上架时间
+                    </div>
+                    <div class="right" >
+                     <div class="con line30" >
+                      {{shopcanshu_productuptime}}
+                     </div>
+                    </div>
+                   </div>
+                   <div class="item" *ngFor="let item of productAttr">
+                      <div class="left" >{{item.name}}</div>
+                      <div class="right" >
+                        <div class="con" >
+                          {{item.value}}
+                        </div>
+                      </div>
+                   </div>
+                  </div>
+                 </div> -->
+                 <div [innerHTML]="description"></div>
+                </div>
+                <!-- <div class="m-commonIssues">
+                 <div class="tt" >
+                  <div class="line" ></div>
+                  <span class="text" >常见问题</span>
+                 </div>
+                 <div class="list" >
+                  </div>
+                  <div class="item">
+                   <p class="qu" ><i class="u-icon u-detail-redNum" ></i><span>订单如何配送？</span></p>
+                   <p class="an" >根据商品所在地、顾客所在地和商品的尺寸重量优选物流配送商，确保优质用户体验。目前暂不支持自选快递，具体物流信息可在下单成功后“我的订单-追踪物流”中查看。</p>
+                  </div>
+                  <div class="item" >
+                   <p class="qu" ><i class="u-icon u-detail-redNum" ></i><span >如何申请退换货？</span></p>
+                   <p class="an">1.自收到商品之日起30日内，顾客可申请无忧退货；如果是退货，退款将原路返还，不同的银行处理时间不同，预计1-5个工作日到账；<br />2.内裤和食品等特殊商品无质量问题不支持退换货；<br />3.退货流程：<br />确认收货-申请退货-客服审核通过-用户寄回商品-仓库签收验货-退款审核-退款完成；<br />4.换货流程：<br />确认收货-申请换货-客服审核通过-用户寄回商品-仓库签收验货-客服确认-换货完成；<br />5.上门取件费用统一与快递服务商结算，顾客只需将退换货商品交给上门取件快递员寄回。如顾客选择自行寄回商品，请先垫付运费，到货验证商品后，将以现金券形式为用户报销运费，不接受单方面到付件。</p>
+                  </div>
+                </div> -->
+            </div>
+        </div>
+    </div>
+    <div *ngIf="!shangjia" class="shoptt">该商品已下架！</div>
+  </ion-content>
+  
+  <ion-footer  *ngIf="shangjia">
+    <ion-toolbar>
+        <div class="footer_bar">
+          <!-- <div class="carticon careabout" (tap)="collectbtn()" [ngClass]="{'collect':collectedProduct}">          
+            <ion-icon ios="ios-heart" md="md-heart" color="danger"></ion-icon>
+            <p>收藏</p>
+          </div> -->
+          <!-- <div class="carticon buycart" [navPush]="'CartPage'">            
+              <ion-icon name="cart"></ion-icon> 
+              <p>购物车</p>
+              <ion-badge color="danger" *ngIf="cartNumber>0">{{cartNumber}}</ion-badge>
+          </div> -->
+          <!-- <div class="addcart" (tap)="getParameter()">
+              加入购物车
+          </div> -->
+          <div class="buy" (tap)="getParameter()">
+              立即兑换
+          </div>
+        </div>
+    </ion-toolbar>
+  </ion-footer>
+  

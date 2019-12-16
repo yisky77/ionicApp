@@ -1,0 +1,55 @@
+<ion-header  [ngStyle]="{'background': navigatorBackColor?navigatorBackColor:'#fff'}">
+  <ion-navbar>
+    <ion-title>购物车</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content class="f4f4f4">
+  <ion-refresher (ionRefresh)="getRefresh($event)" pullMax='250'>
+      <ion-refresher-content style="font-size:12px;" pullingIcon="ios-arrow-dropdown-outline" pullingText="上拉刷新..." refreshingSpinner="circles" refreshingText=""></ion-refresher-content>
+  </ion-refresher>
+  <div *ngFor="let item of list" class="pcontent">
+    <p class="marginb10">
+      <img class="headers" [src]="imgUrl+item.seller.sellerLogo"/>
+      <span>{{item.seller.sellerName}}</span>
+      <span class="theme">{{item.actFul == null?'':item.actFull.actFullName}}</span>
+    </p>
+    <dl class="cart_list" *ngFor="let item of item.cartList">
+      <dt>
+        <ion-checkbox color="danger" checked="{{item.checked==1?'true':'false'}}" (ionChange)="changeCarts(item)"></ion-checkbox>
+      </dt>
+      <dd>
+        <img [src]="imgUrl+item.product.masterImg+'?x-oss-process=image/resize,m_mfit,w_100'+config.imageFormat"  [navPush]="'ProductPage'" [navParams]="{'cid':item['productId']}" />
+        <h2 class="cart_title" [navPush]="'ProductPage'" [navParams]="{'cid':item['productId']}">{{item.product.name1}}</h2>
+        <span [navPush]="'ProductPage'" [navParams]="{'cid':item['productId']}">{{item.specInfo}}</span>
+        <div class="cart_info">
+          <div class="cart_price">¥{{item.productGoods.mallMobilePrice}}元</div>      
+          <div class="cart_num">
+            <div class="input_left" (tap)="decCount(item)">-</div>
+            <div class="input_center">
+              <input type="text"  readonly="readonly" [(ngModel)]="item.count" name="num" id="num" />
+            </div>
+            <div class="input_right" (tap)="incCount(item)">+</div>
+          </div>
+          <ion-icon name="trash" class="trash" (tap)="trash(item.id)"></ion-icon>
+        </div>
+      </dd>
+    </dl>
+  </div>
+  <div class="buyicons" *ngIf="showbasket">
+    <img src="../../assets/imgs/buy.png"  />
+    <p> 购物车是空滴，去挑一件中意的商品吧！</p>
+    <a class="logincontentbtn" (tap)="gohome()" [ngStyle]="{'background': navigatorBackColor?navigatorBackColor:'#b4282d'}">去购物</a>
+  </div>
+</ion-content>
+<ion-footer *ngIf="list.length>0">
+  <ion-toolbar>
+    <div class="all_price"  (tap)="checkAll()">
+      <ion-checkbox color="danger" [(ngModel)]='isChencked'></ion-checkbox>
+      全选 　<p class="flheji">合计: <span style="color:#b62628;font-size: 13px;font-weight: bold;padding-right:5px;"> ¥{{cartInfoVO.checkedDiscountedCartAmount}} 元</span>
+        </p>
+    </div>
+    <ion-buttons end [ngClass]="{'op1':!showop}" (tap)="doPay()">
+      <div color="danger"  class="dopay">下单</div>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

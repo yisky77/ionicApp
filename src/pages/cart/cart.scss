@@ -1,0 +1,175 @@
+page-cart {
+    .op1{opacity: 0.5;pointer-events: none;}
+    .theme{color:#b62628;font-size: 15px;}
+    .f4f4f4{background: #f4f4f4;}
+    .pcontent{    background: #fff;    margin-bottom: 10px;
+        border-radius: 5px;       padding: 10px 10px 0;
+        overflow: hidden;
+    span{font-size:15px;}}
+    .marginb10{height: 30px;line-height: 20px;}
+    .headers{
+        width: 25px;
+        height: 25px;
+        display: inline-block;
+        border-radius: 100%;
+        margin-right: 10px;
+    }
+  .logincontentbtn{
+    width:100%;height:40px;text-align: center;line-height: 40px;font-size: 16px;color:#fff;display: block;
+  }
+  img{display: block;  
+      width: 100px;
+    float: left;
+    border-radius: 5px;    margin-right: 10px;
+    height: 100px;}
+  .buyicons{width: 80%;height:280px;position: absolute;top:-100px;left:0;right:0;bottom:0;margin:auto;
+    img{display: block;margin:0px auto 0px;float:none;}
+    p{text-align: center;line-height:70px;color:#ccc;font-size: 14px;}
+  }
+
+.cart_list{  //dl
+  display: flex;
+//   border-bottom:1px solid #ccc;
+  padding: 0px 0 10px;
+  dt{
+    //   width:10rem;  /*100px;*/
+      padding:1rem 0px;
+      display: flex;
+      align-items: center;
+
+      ion-checkbox{
+
+          width: 2.8rem;
+          height: 2.8rem;
+      }
+
+      img{
+
+          flex: 1;           
+          height: 6rem;
+          margin-right: .5rem;
+
+
+      }
+
+
+
+
+  }
+  .cart_info{
+      color: #515151;
+  }
+  dd{
+      flex:1;position: relative;
+      
+        span{   
+        color: #515151;        
+        display: block;
+            line-height: 15px;}
+      .cart_title{
+        font-size: 12px;
+        padding: .5rem 0 0;
+        margin: 0px;
+        color: #515151;        
+      }
+     
+
+      /*底部的价格  增加按钮*/
+      .cart_info{
+          display: flex;position: absolute;bottom:0;left:112px;
+          .cart_price{
+            font-size: 12px;
+              flex:1;
+              line-height: 37px;
+              padding-right: 20px;
+          }
+
+          .cart_num{
+              width: 80px;
+              margin-top: 5px;
+              display: flex;
+
+              .input_left,.input_right{
+
+                  width: 25px;
+                  text-align: center;
+                  height: 25px;
+                  line-height:22px;font-size: 17px;
+      color: #515151;
+                  border: 1px solid #eee;
+                  background: #fff;
+              }
+              .input_center{
+                  flex: 1;
+                  margin-top: -1px;
+                  input{
+                  color:#515151;
+                      width: 100%;
+                      height: 25px;    font-size: 12px;
+                      border-top: 1px solid #eee;
+                      border-bottom: 1px solid #eee;
+                      text-align: center;
+                  }
+              }
+          }
+
+      }
+
+  }
+}
+ion-buttons{margin:0;}
+strong{float:right;}
+/*底部*/
+.all_price{
+  height: 4.4rem;
+  line-height: 4.4rem;color:#7f7f7f;    font-size: 13px;
+  ion-checkbox{
+      position: relative;
+      top:.6rem;
+  }
+}
+ion-checkbox{margin-left:10px;}
+.checkbox-ios.checkbox-disabled, .item-ios.item-checkbox-disabled ion-label{
+
+  opacity:1!important;
+
+}
+.cart_spinner{
+
+  width: 60px;
+  height: 60px;
+  margin: 60px auto;
+}
+ion-footer{
+    background: #fff;
+}
+.dopay{
+
+  height: 4.4rem;
+  line-height: 4.4rem;
+  text-align: center;
+  color: #fff;
+  background: #b62628;
+  font-size: 14px;
+padding: 0px 25px;
+}
+
+
+.dodelete{
+  
+      height: 3.4rem;
+      line-height: 3.4rem;
+      text-align: center;
+      padding:0px 1.4rem;
+      color: #666;
+      border:1px solid red;
+      font-size: 1.6rem;
+      border-radius: .5rem;
+  }
+
+  .trash {
+    margin: 6px 10px;
+}
+}
+p.flheji{line-height: 52px;position: absolute;right: 80px;top: 0;}
+.alert-ios .alert-message{padding:0 16px 16px !important;}

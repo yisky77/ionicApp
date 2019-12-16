@@ -1,0 +1,17 @@
+page-store {
+  .buy2{
+    color: rgb(255, 72, 72); background: rgb(255, 72, 72); border: 1px solid rgb(255, 72, 72);
+  }
+  .flex1{flex:1;text-align: center;
+    p{    line-height: 5px;}
+    }
+  .storepage{padding:15px;border-bottom: 1px solid #dedede;}
+  .flex6{flex:6;padding: 7px;
+        p{    color: #9a9a9a;}
+    }
+    .ion-ios-heart{color:#9a9a9a;    margin-top: 7px;
+        &.coll{color:rgb(255, 72, 72)}
+    }
+  .g_price{color: rgb(255, 72, 72);}
+  .goods5{touch-action: pan-y; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); border-radius: 5px; border: 0px solid rgb(204, 204, 204); background: rgba(235, 230, 230, 0.35);}
+}

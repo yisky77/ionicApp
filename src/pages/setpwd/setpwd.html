@@ -1,0 +1,16 @@
+<ion-header [ngStyle]="{'background': navigatorBackColor?navigatorBackColor:'#fff'}">
+  <ion-navbar>
+    <ion-title>设置密码</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <p class="titlephone">您即将修改账号为<span [ngStyle]="{'color': navigatorBackColor?navigatorBackColor:'#b62628','padding':'0 5px','font-size':'14px'}">{{phone}}</span>的登录密码</p>
+  <section class="MessageLogin-FsPlX">
+    <input type="password"  placeholder="输入新密码(不少于6位数)" [(ngModel)]="logininfo.password1" />
+  </section>
+  <section class="MessageLogin-FsPlX">
+    <input type="password"  placeholder="再次确认密码" [(ngModel)]="logininfo.password2" />
+  </section>
+<button class="SubmitButton-2wG4T" (tap)="updatepwd()">提交设置 </button>
+</ion-content>
