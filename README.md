@@ -1,2 +1,13 @@
-# ionicApp
- 用ionic做的一款商城app，使用的技术包括angulaur、typescript等。
+# APP
+
+#### 介绍
+APP打包以及微站预览项目
+
+#### 软件架构
+采用ionic3框架编写
+
+
+#### 安装教程
+npm run ionic -g
+npm run cordova -g
+ionic serve

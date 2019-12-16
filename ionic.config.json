@@ -1,0 +1,7 @@
+{
+  "name": "clXcx",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
