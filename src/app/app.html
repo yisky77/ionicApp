@@ -1,0 +1,20 @@
+<ion-menu type="overlay" [content]="content" side="left">
+    <!-- type="reveal/overlay/push" -->
+  <ion-header>
+    <ion-toolbar [ngStyle]="{'background': globoalSet.navigatorBackColor?globoalSet.navigatorBackColor:'#fff'}">
+      <ion-title>导航</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <button ion-item *ngFor="let item of pages;let key=index" (click)="openPage(item,key)">
+          {{item.name}}
+      </button>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+<!-- <ion-icon name="md-home" class="mdhome" (tap)="goToHome()" [ngClass]="{'show':mdhomeshow && !config.isApp}"></ion-icon> -->
+<!-- <div class="showstartpage" [ngClass]="hidepic" (tap)="goToHome()">
+  <img src="assets/imgs/slide2.png" />
+</div> -->
+<ion-nav [root]="rootPage" #content  swipeBackEnabled="false"></ion-nav>
